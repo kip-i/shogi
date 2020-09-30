@@ -1,7 +1,7 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
 #include <stdio.h>
-int king_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
+int oushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
@@ -33,7 +33,7 @@ int king_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
-int king_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
+int gyokushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <= 28)
@@ -65,7 +65,7 @@ int king_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
-int ho_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
+int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
     {//味方コマが置いてあるとき
@@ -98,7 +98,7 @@ int ho_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
-int ho_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
+int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <=28)
     {//味方コマが置いてあるとき

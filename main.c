@@ -3,7 +3,8 @@
 #include <stdio.h>
 
 /*飛車の動き*/
-int hisha(int banmen[11][11], int prayer, int xhaiti, int yhaiti, int xmuve, int ymuve)
+/*飛車の動き*/
+int hisha_1(int banmen[11][11],int temoti[], int prayer, int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
 	int loop1;
 	int option_nari;
@@ -16,7 +17,7 @@ int hisha(int banmen[11][11], int prayer, int xhaiti, int yhaiti, int xmuve, int
 	}
 
 	/*動くマスに味方のコマがあったら動かない*/
-	if (((banmen[xhaiti][yhaiti] <= 14) && (banmen[xmuve][ymuve] <= 14)) || ((banmen[xhaiti][yhaiti] >= 14) && (banmen[xmuve][ymuve] >= 14)))
+	if (((banmen[xhaiti][yhaiti] <= 14) && (banmen[xmuve][ymuve] <= 14)))
 	{
 		printf("味方のコマが置いてあります。\n差し直してください。");
 		return 1;
@@ -81,7 +82,29 @@ int hisha(int banmen[11][11], int prayer, int xhaiti, int yhaiti, int xmuve, int
 	}
 
 	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
-	/*プレイヤーによって処理を変える*/
+	/*相手のコマを自分のコマの番号に直し保存する処理*/
+	if(banmen[xmuve][ymuve] >= 15)
+	{
+		temoti[banmen[xmuve][ymuve]] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
+
+		/*成りコマは元のコマに直して保存する*/
+		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
+		{
+			if(banmen[xmuve][ymuve] == loop1)
+			{
+				temoti[banmen[xmuve][ymuve]]--;
+			}
+		}
+		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
+		{
+			if(banmen[xmuve][ymuve] == loop1)
+			{
+				temoti[banmen[xmuve][ymuve]]--;
+			}
+		}
+	}
+
+	/*成りの判定*/
 	if (banmen[xhaiti][yhaiti] <= 14)
 	{
 		if ((banmen[xmuve][ymuve] <= 3) || (banmen[xhaiti][yhaiti] <= 3))
@@ -93,6 +116,7 @@ int hisha(int banmen[11][11], int prayer, int xhaiti, int yhaiti, int xmuve, int
 
 				if (option_nari == 1)
 				{
+					
 					banmen[xmuve][ymuve] = 3;
 					banmen[xhaiti][yhaiti] = 0;
 					return 2;
@@ -107,7 +131,106 @@ int hisha(int banmen[11][11], int prayer, int xhaiti, int yhaiti, int xmuve, int
 			}
 		}
 	}
+}
 
+int hisha_2(int banmen[11][11],int temoti[], int prayer, int xhaiti, int yhaiti, int xmuve, int ymuve)
+{
+	int loop1;
+	int option_nari;
+
+	/*動けないマスが選択されたときは動かない*/
+	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || (banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	{
+		printf("そこには動けません。\n指し直してください。\n");
+		return 1;
+	}
+
+	/*動くマスに味方のコマがあったら動かない*/
+	if (((banmen[xhaiti][yhaiti] >= 15) && (banmen[xmuve][ymuve] >= 15)))
+	{
+		printf("味方のコマが置いてあります。\n差し直してください。");
+		return 1;
+	}
+	
+	/*縦に動く場合*/
+	if (xhaiti == xmuve)
+	{
+		if (yhaiti > ymuve)
+		{
+			/*動くマスと今いるマスの間に何もないかの確認の処理*/
+			for (loop1 = ymuve + 1;loop1 < yhaiti;loop1++)
+			{
+				if (banmen[xhaiti][loop1] > 0)
+				{
+					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
+					return 1;		/*何かあったら動けないので1を返す*/
+				}
+			}
+		}
+		else
+		{
+			/*動くマスと今いるマスの間に何もないかの確認の処理*/
+			for (loop1 = yhaiti + 1; loop1 < ymuve; loop1++)
+			{
+				if (banmen[xhaiti][loop1] > 0)
+				{
+					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
+					return 1;		/*何かあったら動けないので1を返す*/
+				}
+			}
+		}
+	}
+
+	/*横の動くとき*/
+	if (yhaiti == ymuve)
+	{
+		if (xhaiti > xmuve)
+		{
+			/*動くマスと今いるマスの間に何もないかの確認の処理*/
+			for (loop1 = xmuve + 1; loop1 < xhaiti; loop1++)
+			{
+				if (banmen[loop1][yhaiti] > 0)
+				{
+					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
+					return 1;		/*何かあったら動けないので1を返す*/
+				}
+			}
+		}
+		else
+		{
+			/*動くマスと今いるマスの間に何もないかの確認の処理*/
+			for (loop1 = xhaiti + 1; loop1 < xmuve; loop1++)
+			{
+				if (banmen[loop1][yhaiti] > 0)
+				{
+					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
+					return 1;		/*何かあったら動けないので1を返す*/
+				}
+			}
+		}
+	}
+
+	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
+	if(banmen[xmuve][ymuve] <= 14)
+	{
+		temoti[banmen[xmuve][ymuve]] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
+
+		/*成りコマは元のコマに直して保存する*/
+		for (loop1 = 3;loop1 <= 5; loop1 = loop1 + 2)
+		{
+			if(banmen[xmuve][ymuve] == loop1)
+			{
+				temoti[banmen[xmuve][ymuve]]--;
+			}
+		}
+		for (loop1 = 7; loop1 <= 14; loop1 = loop1 + 2)
+		{
+			if(banmen[xmuve][ymuve] == loop1)
+			{
+				temoti[banmen[xmuve][ymuve]]--;
+			}
+		}
+	}
 	if ((banmen[xhaiti][yhaiti] >= 15) || (banmen[xmuve][ymuve] >= 15))
 	{
 		if (banmen[xmuve][ymuve] >= 8)

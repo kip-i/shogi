@@ -67,6 +67,7 @@ int gyokushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 }
 int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
+    int naru;
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
     {//味方コマが置いてあるとき
         printf("味方のコマが置いてあります.\n指し直してください.");
@@ -86,13 +87,21 @@ int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     {//置ける位置のとき
         if(y_put<=3)
         {//裏になるとき
-            board[x_put][y_put] = 14;
-            return 2;
-        }
-        else
-        {//そのままのとき
-            board[x_put][y_put] = 13;
-            return 2;
+            while(naru!=1&&naru!=2)
+            {
+                printf("成る:1\n成らない:2");
+                scanf("%c",&naru);
+            }
+            if(naru==1)
+            {
+                board[x_put][y_put] = 14;
+                return 2;
+            }
+            else
+            {
+                board[x_put][y_put] = 13;
+                return 2;
+            }
         }
     }
     printf("そこには,動けません.\n指し直してください.");
@@ -100,6 +109,7 @@ int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 }
 int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
+    int naru;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <=28)
     {//味方コマが置いてあるとき
         printf("味方のコマが置いてあります.\n指し直してください.");
@@ -119,14 +129,22 @@ int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     {//置ける位置のとき
         if(y_put>=7)
         {//裏になるとき
-            board[x_put][y_put] = 28;
-            return 2;
-        }
-        else
-        {//そのままのとき
-            board[x_put][y_put] = 27;
-            return 2;
-        }
+          while(naru!=1&&naru!=2)
+            {
+                printf("成る:1\n成らない:2");
+                scanf("%c",&naru);
+            }
+            if(naru==1)
+            {
+                board[x_put][y_put] = 14;
+                return 2;
+            }
+            else
+            {
+                board[x_put][y_put] = 13;
+                return 2;
+            }
+        }  
     }
     printf("そこには,動けません.\n指し直してください.");
     return 1;

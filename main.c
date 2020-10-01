@@ -7,6 +7,8 @@
 int hisha_1(int banmen[11][11],int temoti[], int prayer, int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
 	int loop1;
+	int loop2;
+	int number;
 	int option_nari;
 
 	/*動けないマスが選択されたときは動かない*/
@@ -85,57 +87,69 @@ int hisha_1(int banmen[11][11],int temoti[], int prayer, int xhaiti, int yhaiti,
 	/*相手のコマを自分のコマの番号に直し保存する処理*/
 	if(banmen[xmuve][ymuve] >= 15)
 	{
-		temoti[banmen[xmuve][ymuve]] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
+		for (loop2 = 0; loop2 <= 39; loop2++)
+		{
+			if (temoti[loop2] == 0)
+			{
+				number = loop2;
+				temoti[loop2] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
+				loop2 = 40;	/*ループから出るために代入*/
+			}
+		}
 
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
 			if(banmen[xmuve][ymuve] == loop1)
 			{
-				temoti[banmen[xmuve][ymuve]]--;
+				temoti[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
 			if(banmen[xmuve][ymuve] == loop1)
 			{
-				temoti[banmen[xmuve][ymuve]]--;
+				temoti[number]--;
 			}
 		}
 	}
 
-	/*成りの判定*/
-	if (banmen[xhaiti][yhaiti] <= 14)
+	/*成りの判定、及び動く処理*/
+	if ((banmen[xmuve][ymuve] <= 3) || (banmen[xhaiti][yhaiti] <= 3))
 	{
-		if ((banmen[xmuve][ymuve] <= 3) || (banmen[xhaiti][yhaiti] <= 3))
+		while (1)
 		{
-			while (1)
+			printf("成る:1\n成らない:2\n");
+			scanf("%d", &option_nari);
+			
+			if (option_nari == 1)
 			{
-				printf("成る:1\n成らない:2\n");
-				scanf("%d", &option_nari);
-
-				if (option_nari == 1)
-				{
-					
-					banmen[xmuve][ymuve] = 3;
-					banmen[xhaiti][yhaiti] = 0;
-					return 2;
-				}
-
-				if (option_nari == 2)
-				{
-					banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-					banmen[xhaiti][yhaiti] = 0;
-					return 2;
-				}
+		
+				banmen[xmuve][ymuve] = 3;
+				banmen[xhaiti][yhaiti] = 0;
+				return 2;
+			}
+			if (option_nari == 2)
+			{
+				banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
+				banmen[xhaiti][yhaiti] = 0;
+				return 2;
 			}
 		}
+	}
+	else
+	{
+		banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
+		banmen[xhaiti][yhaiti] = 0;
+		return 2;
 	}
 }
 
 int hisha_2(int banmen[11][11],int temoti[], int prayer, int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
 	int loop1;
+	int loop2;
+	int number;
 	int option_nari;
 
 	/*動けないマスが選択されたときは動かない*/
@@ -213,48 +227,62 @@ int hisha_2(int banmen[11][11],int temoti[], int prayer, int xhaiti, int yhaiti,
 	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
 	if(banmen[xmuve][ymuve] <= 14)
 	{
-		temoti[banmen[xmuve][ymuve]] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
-
-		/*成りコマは元のコマに直して保存する*/
-		for (loop1 = 3;loop1 <= 5; loop1 = loop1 + 2)
+		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if (temoti[loop2] == 0)
 			{
-				temoti[banmen[xmuve][ymuve]]--;
+				number = loop2;
+				temoti[loop2] = banmen[xmuve][ymuve] +14;	/*自分の対応する番号に修正し保存*/
+				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
-		for (loop1 = 7; loop1 <= 14; loop1 = loop1 + 2)
+
+		/*成りコマは元のコマに直して保存する*/
+		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
 			if(banmen[xmuve][ymuve] == loop1)
 			{
-				temoti[banmen[xmuve][ymuve]]--;
+				temoti[number]++;
+			}
+		}
+		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
+		{
+			if(banmen[xmuve][ymuve] == loop1)
+			{
+				temoti[number]++;
 			}
 		}
 	}
-	if ((banmen[xhaiti][yhaiti] >= 15) || (banmen[xmuve][ymuve] >= 15))
+	
+	/*成りの判定、及び移動の処理*/
+	if ((banmen[xhaiti][yhaiti] >= 8) || (banmen[xmuve][ymuve] >= 8))
 	{
-		if (banmen[xmuve][ymuve] >= 8)
+		/*成るかどうか決めるまでループ*/
+		while (1)
 		{
-			while (1)
+			printf("成る:1\n成らない:2\n");
+			scanf("%d" ,&option_nari);
+			
+			if (option_nari == 1)
 			{
-				printf("成る:1\n成らない:2\n");
-				scanf("%d" ,&option_nari);
-
-				if (option_nari == 1)
-				{
-					banmen[xmuve][ymuve] = 17;
-					banmen[xhaiti][yhaiti] = 0;
-					return 2;
-				}
-
-				if (option_nari == 2)
-				{
-					banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-					banmen[xhaiti][yhaiti] = 0;
-					return 2;
-				}
+				banmen[xmuve][ymuve] = 17;
+				banmen[xhaiti][yhaiti] = 0;
+				return 2;
+			}
+			
+			if (option_nari == 2)
+			{
+				banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
+				banmen[xhaiti][yhaiti] = 0;
+				return 2;
 			}
 		}
+	}
+	else		/*成れない場合移動の処理をする*/
+	{
+		banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
+		banmen[xhaiti][yhaiti] = 0;
+		return 2;		
 	}
 }
 int oushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)

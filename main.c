@@ -459,5 +459,6 @@ int silver_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put
 int main (void)
 {
     int board[11][11];
+	printf("プルリクやってみる");
     return 0;
 }

@@ -134,6 +134,7 @@ int hisha(int banmen[11][11], int prayer, int xhaiti, int yhaiti, int xmuve, int
 		}
 	}
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int oushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -166,6 +167,7 @@ int oushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int gyokushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -198,6 +200,7 @@ int gyokushou(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     int naru;
@@ -218,8 +221,13 @@ int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     }
     if(y_choise - 1 == y_put)
     {//置ける位置のとき
-        if(y_put<=3)
-        {//裏になるとき
+        if(y_put==1)
+		{最奥のとき
+			board[x_put][y_put]=14;
+			return 2;
+		}
+		if(y_put<=3)
+        {//裏になれるとき
             while(naru!=1&&naru!=2)
             {
                 printf("成る:1\n成らない:2");
@@ -240,6 +248,7 @@ int hu_1(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
 {
     int naru;
@@ -260,7 +269,12 @@ int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     }
     if(y_choise + 1 == y_put)
     {//置ける位置のとき
-        if(y_put>=7)
+        if(y_put==９)
+		{最奥のとき
+			board[x_put][y_put]=28;
+			return 2;
+		}
+		if(y_put>=7)
         {//裏になるとき
           while(naru!=1&&naru!=2)
             {
@@ -269,12 +283,12 @@ int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
             }
             if(naru==1)
             {
-                board[x_put][y_put] = 14;
+                board[x_put][y_put] = 28;
                 return 2;
             }
             else
             {
-                board[x_put][y_put] = 13;
+                board[x_put][y_put] = 27;
                 return 2;
             }
         }  
@@ -282,6 +296,7 @@ int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int keima_1(int board[11][11], int x_choice, int y_choice, int x_put, int y_put)
 {
 	if ((1 <= board[x_put][y_put]) && (board[x_put][y_put] <= 14))
@@ -315,6 +330,7 @@ int keima_1(int board[11][11], int x_choice, int y_choice, int x_put, int y_put)
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int keima_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put)
 {
 	if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
@@ -348,6 +364,7 @@ int keima_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put)
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int silver_1(int board[11][11], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, front[3] = { -1, 0, 1 }, back[2] = { -1, 1 };
@@ -402,6 +419,7 @@ int silver_1(int board[11][11], int x_choice, int y_choice, int x_put, int y_put
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int silver_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, front[3] = { -1, 0, 1 }, back[2] = { -1, 1 };
@@ -456,6 +474,7 @@ int silver_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int main (void)
 {
     int board[11][11];

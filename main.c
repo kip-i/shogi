@@ -428,7 +428,7 @@ int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
+int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
 {
     int naru;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <=28)

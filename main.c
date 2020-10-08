@@ -1,5 +1,7 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
+
+//branch ouandho
 #include <stdio.h>
 
 /*飛車の動き*/
@@ -491,8 +493,6 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-#include<stdio.h>
-
 int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
@@ -553,7 +553,6 @@ int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
-
 int keima_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
@@ -614,7 +613,6 @@ int keima_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
-
 int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 }, back[2] = { -1, 1 };

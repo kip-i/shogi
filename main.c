@@ -1,5 +1,6 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
+
 //branch ouandho
 #include <stdio.h>
 
@@ -429,7 +430,7 @@ int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int hu_2(int board[11][11],int x_choise,int y_choise,int x_put,int y_put)
+int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
 {
     int naru;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <=28)
@@ -669,9 +670,7 @@ int silver_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
-<<<<<<< HEAD
 //------------------------------------------------------------------------------------------------------------------------------------------------
-=======
 
 /*角の動き*/
 int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
@@ -1467,7 +1466,7 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	return 2;
 }
 
->>>>>>> a89c48775b901239a06834f85b8aa190a3e86049
+
 int main (void)
 {
     int board[11][11];

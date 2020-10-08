@@ -1,5 +1,6 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
+//branch ouandho
 #include <stdio.h>
 
 /*飛車の動き*/

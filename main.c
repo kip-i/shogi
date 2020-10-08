@@ -1,6 +1,7 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
-//俺試し
+
+//branch ouandho
 #include <stdio.h>
 
 /*飛車の動き*/
@@ -669,9 +670,7 @@ int silver_2(int board[11][11], int x_choice, int y_choice, int x_put, int y_put
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
-<<<<<<< HEAD
 //------------------------------------------------------------------------------------------------------------------------------------------------
-=======
 
 /*角の動き*/
 int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
@@ -1467,7 +1466,7 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	return 2;
 }
 
->>>>>>> a89c48775b901239a06834f85b8aa190a3e86049
+
 int main (void)
 {
     int board[11][11];

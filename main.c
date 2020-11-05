@@ -26,7 +26,7 @@ int up_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,in
     }
     else if((x_put == x_choice -1 || x_put == x_choice + 1) && (y_put == y_choice - 1))  //動けない位置に指した場合
     {
-        printf("不正な入力です.\n指しなしてください.");
+        printf("不正な入力です.\n指し直してください.");
         return 1;
     }
     else
@@ -118,7 +118,7 @@ int down_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,
     }
     else if((x_put == x_choice -1 || x_put == x_choice + 1) && (y_put == y_choice + 1))  //動けない位置に指した場合
     {
-        printf("不正な入力です.\n指しなしてください.");
+        printf("不正な入力です.\n指し直してください.");
         return 1;
     }
     else
@@ -851,7 +851,7 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     }
     if(y_choise + 1 == y_put)
     {//置ける位置のとき
-        if(y_put==９)
+        if(y_put==9)
 		{//最奥のとき
 			while(have[i] != 0)
 			{//空欄まで進む

@@ -26,7 +26,7 @@ int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
     }
     else if((x_put == x_choice -1 || x_put == x_choice + 1) && (y_put == y_choice - 1))  //動けない位置に指した場合
     {
-        printf("不正な入力です.\n指しなしてください.");
+        printf("不正な入力です.\n指し直してください.");
         return 1;
     }
     else
@@ -118,7 +118,7 @@ int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
     }
     else if((x_put == x_choice -1 || x_put == x_choice + 1) && (y_put == y_choice + 1))  //動けない位置に指した場合
     {
-        printf("不正な入力です.\n指しなしてください.");
+        printf("不正な入力です.\n指し直してください.");
         return 1;
     }
     else
@@ -404,6 +404,7 @@ int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 		}
 	}
 }
+
 /*飛車の動き*/
 /*飛車の動き*/
 int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
@@ -688,7 +689,7 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
+int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
 	int k=0;
@@ -727,7 +728,7 @@ int oushou(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,in
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int gyokushou(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
+int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
 	int k=0;
@@ -833,6 +834,7 @@ int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
 int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
 {
     int naru;
+	int i=0;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <=28)
     {//味方コマが置いてあるとき
         printf("味方のコマが置いてあります.\n指し直してください.");
@@ -850,7 +852,7 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     }
     if(y_choise + 1 == y_put)
     {//置ける位置のとき
-        if(y_put==９)
+        if(y_put==9)
 		{//最奥のとき
 			while(have[i] != 0)
 			{//空欄まで進む

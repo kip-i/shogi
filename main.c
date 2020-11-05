@@ -404,6 +404,7 @@ int down_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_
 		}
 	}
 }
+
 /*飛車の動き*/
 /*飛車の動き*/
 int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)

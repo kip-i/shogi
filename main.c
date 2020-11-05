@@ -1017,7 +1017,7 @@ int keima_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 }
 int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
-	int i, j, k = 0, front[3] = { -1, 0, 1 }, back[2] = { -1, 1 };
+	int i, j, k = 0, front[3] = { -1, 0, 1 };
 	char num = '0';
 
 	if ((1 <= board[x_put][y_put]) && (board[x_put][y_put] <= 14))
@@ -1069,7 +1069,7 @@ int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	}
 	for (j = 0; j < 2; j++)
 	{
-		if ((x_choice + 1 == x_put) && (y_choice + front[i] == y_put))
+		if ((x_choice + 1 == x_put) && (y_choice + front[j] == y_put))
 		{
 			if (x_put <= 3)
 			{
@@ -1125,7 +1125,7 @@ int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 }
 int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
-	int i, j, k = 0, front[3] = { -1, 0, 1 }, back[2] = { -1, 1 };
+	int i, j, k = 0, front[3] = { -1, 0, 1 };
 	char num = '0';
 
 	if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
@@ -1177,7 +1177,7 @@ int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	}
 	for (j = 0; j < 2; j++)
 	{
-		if ((x_choice + 1 == x_put) && (y_choice + front[i] == y_put))
+		if ((x_choice + 1 == x_put) && (y_choice + front[j] == y_put))
 		{
 			if (x_put >= 7)
 			{

@@ -1069,7 +1069,7 @@ int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	}
 	for (j = 0; j < 2; j++)
 	{
-		if ((x_choice + 1 == x_put) && (y_choice + front[i] == y_put))
+		if ((x_choice + 1 == x_put) && (y_choice + front[j] == y_put))
 		{
 			if (x_put <= 3)
 			{
@@ -1177,7 +1177,7 @@ int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	}
 	for (j = 0; j < 2; j++)
 	{
-		if ((x_choice + 1 == x_put) && (y_choice + front[i] == y_put))
+		if ((x_choice + 1 == x_put) && (y_choice + front[j] == y_put))
 		{
 			if (x_put >= 7)
 			{

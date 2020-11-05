@@ -4,7 +4,7 @@
 //branch ouandho
 #include <stdio.h>
 
-int up_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)              //1p金
+int up_kin(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -187,7 +187,7 @@ int down_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,
 	}
 }
 
-int up_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)      //1p香車
+int up_kyousya(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)      //1p香車
 {
     int i,j,loop1,loop2,number;
 
@@ -296,7 +296,7 @@ int up_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_pu
 	}
 }
 
-int down_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)    //2p香車
+int down_kyousya(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)    //2p香車
 {
     int i,j,loop1,loop2,number;
 
@@ -689,7 +689,7 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
+int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
 	int k=0;
@@ -728,7 +728,7 @@ int oushou(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,in
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int gyokushou(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
+int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
 {
     int i, j, around[3] = {-1, 0, 1};
 	int k=0;

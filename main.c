@@ -4,7 +4,7 @@
 //branch ouandho
 #include <stdio.h>
 
-int up_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)              //1p金
+int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -80,14 +80,14 @@ int up_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,in
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(board[xput][yput] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[x_put][y_put] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
@@ -96,7 +96,7 @@ int up_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,in
 }
         
 
-int down_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)        //2p金
+int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)        //2p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -172,14 +172,14 @@ int down_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(board[xput][yput] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[x_put][y_put] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
@@ -187,7 +187,7 @@ int down_kin(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,
 	}
 }
 
-int up_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)      //1p香車
+int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)      //1p香車
 {
     int i,j,loop1,loop2,number;
 
@@ -281,14 +281,14 @@ int up_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_pu
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(board[xput][yput] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[x_put][y_put] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
@@ -296,7 +296,7 @@ int up_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_pu
 	}
 }
 
-int down_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_put,int y_put)    //2p香車
+int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)    //2p香車
 {
     int i,j,loop1,loop2,number;
 
@@ -390,14 +390,14 @@ int down_kyousya(int board[11][11],int temoti[],int x_choise,int y_choise,int x_
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(board[xput][yput] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[x_put][y_put] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
 				temoti[number]--;
 			}

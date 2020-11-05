@@ -837,6 +837,7 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	int yloop;
 	int loop1;
 	int number;
+	int option_nari;
 
 	if ((xhaiti == xmuve) || (ymuve == yhaiti))
 	{
@@ -850,9 +851,9 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		/*左上方向に動く時の動けるかどうかの確認*/
 		if (xmuve <= xhaiti)
 		{
-			for (xloop = xmuve + 1;　xloop < xhaiti; xloop++)
+			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < ;yloop++ )
+				for (yloop = ymuve + 1; yloop < ymuve;yloop++ )
 				{
 					if (banmen[xloop][yloop] > 0)
 					{
@@ -867,7 +868,7 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		{
 			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti)
+				for (yloop = yloop + 1; yloop > yhaiti;yloop--)
 				{
 					if(banmen[xloop][yloop] > 0)
 					{
@@ -987,6 +988,7 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	int yloop;
 	int loop1;
 	int number;
+	int option_nari;
 
 	if ((xhaiti == xmuve) || (ymuve == yhaiti))
 	{
@@ -1000,9 +1002,9 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		/*左上方向に動く時の動けるかどうかの確認*/
 		if (xmuve <= xhaiti)
 		{
-			for (xloop = xmuve + 1;　xloop < xhaiti; xloop++)
+			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < ;yloop++ )
+				for (yloop = ymuve + 1; yloop < yhaiti;yloop++ )
 				{
 					if (banmen[xloop][yloop] > 0)
 					{
@@ -1017,7 +1019,7 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		{
 			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti)
+				for (yloop = yloop + 1; yloop > yhaiti;yloop--)
 				{
 					if(banmen[xloop][yloop] > 0)
 					{
@@ -1138,7 +1140,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	int loop1;
 	int number;
 
-	if ((xhaiti == xmuve) || (ymuve == yhaiti) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))))
+	if ((xhaiti == xmuve) || (ymuve == yhaiti) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1)))
 	{
 		printf("そこには,動けません.\n指し直してください.\n");
 		return 1;
@@ -1150,9 +1152,9 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 		/*左上方向に動く時の動けるかどうかの確認*/
 		if (xmuve <= xhaiti)
 		{
-			for (xloop = xmuve + 1;　xloop < xhaiti; xloop++)
+			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < ;yloop++ )
+				for (yloop = ymuve + 1; yloop < yhaiti;yloop++ )
 				{
 					if (banmen[xloop][yloop] > 0)
 					{
@@ -1167,7 +1169,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 		{
 			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti)
+				for (yloop = yloop + 1; yloop > yhaiti; yloop--)
 				{
 					if(banmen[xloop][yloop] > 0)
 					{
@@ -1262,7 +1264,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	int loop1;
 	int number;
 
-	if ((xhaiti == xmuve) || (ymuve == yhaiti) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))))
+	if ((xhaiti == xmuve) || (ymuve == yhaiti) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1)))
 	{
 		printf("そこには,動けません.\n指し直してください.\n");
 		return 1;
@@ -1274,9 +1276,9 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 		/*左上方向に動く時の動けるかどうかの確認*/
 		if (xmuve <= xhaiti)
 		{
-			for (xloop = xmuve + 1;　xloop < xhaiti; xloop++)
+			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < ;yloop++ )
+				for (yloop = ymuve + 1; yloop < yhaiti;yloop++ )
 				{
 					if (banmen[xloop][yloop] > 0)
 					{
@@ -1291,7 +1293,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 		{
 			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti)
+				for (yloop = yloop + 1; yloop > yhaiti;yloop--)
 				{
 					if(banmen[xloop][yloop] > 0)
 					{
@@ -1389,7 +1391,7 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 
 	/*動けないマスが選択されたときは動かない*/
 	/*周囲８マスも調べる*/
-	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))) ||(banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))||(banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
@@ -1511,7 +1513,7 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 
 	/*動けないマスが選択されたときは動かない*/
 	/*周囲８マスをまずも調べる*/
-	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))) || (banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))|| (banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;

@@ -1659,7 +1659,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	return 2;
 }
 /*裏角の動き 1*/
-int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
 	int xloop;
 	int yloop;

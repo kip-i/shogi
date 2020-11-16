@@ -1,7 +1,34 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
 #include <stdio.h>
-
+int reput(int board[11][11],int pointBoard[11][11],int player)
+{//(盤面,point盤,プレイヤーnum)
+	int i, j;
+	for(i=1;i<=10;i++)
+	{
+		for(j=1;j<=10;j++)
+		{
+			if(player==1&&board[i][j]==1)
+			{
+				if(pointBoard[i][j]>=1)
+				{
+					printf("王手放置です.\n指し直してください.");
+					return 1;
+				}
+			}
+			if(player==2&&board[i][j]==15)
+			{
+				if(pointBoard[i][j]>=1)
+				{
+					printf("王手放置です.\n指し直してください.");
+					return 1;
+				}
+			}
+		}
+	}
+	return 2;
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};

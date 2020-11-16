@@ -1,7 +1,5 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
-
-//branch ouandho
 #include <stdio.h>
 int reput(int board[11][11],int pointBoard[11][11],int player)
 {//(盤面,point盤,プレイヤーnum)
@@ -120,8 +118,7 @@ int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
 		}
 	}
 }
-        
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)        //2p金
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -212,7 +209,7 @@ int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
 		}
 	}
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)      //1p香車
 {
     int i,j,loop1,loop2,number;
@@ -321,7 +318,7 @@ int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 		}
 	}
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)    //2p香車
 {
     int i,j,loop1,loop2,number;
@@ -430,8 +427,7 @@ int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 		}
 	}
 }
-
-/*飛車の動き*/
+//------------------------------------------------------------------------------------------------------------------------------------------------
 /*飛車の動き*/
 int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
@@ -981,6 +977,7 @@ int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int keima_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
@@ -1041,6 +1038,7 @@ int keima_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 };
@@ -1149,6 +1147,7 @@ int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 };
@@ -1257,7 +1256,7 @@ int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 /*角の動き*/
 int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
@@ -1408,7 +1407,7 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		return 2;
 	}
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 /*角の動き,preyer2*/
 int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
@@ -1559,7 +1558,7 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		return 2;
 	}
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏角の動き 1*/
 int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
@@ -1684,8 +1683,9 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	banmen[xhaiti][yhaiti] = 0;
 	return 2;
 }
-/*裏角の動き 1*/
-int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+//------------------------------------------------------------------------------------------------------------------------------------------------
+/*裏角の動き 2*/
+int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
 	int xloop;
 	int yloop;
@@ -1808,7 +1808,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	banmen[xhaiti][yhaiti] = 0;
 	return 2;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏飛車の動き 1*/
 int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
@@ -1931,6 +1931,7 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	banmen[xhaiti][yhaiti] = 0;
 	return 2;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏飛車の動き 2*/
 int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
 {
@@ -2053,7 +2054,7 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	banmen[xhaiti][yhaiti] = 0;
 	return 2;
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int main (void)
 {
     int board[11][11];

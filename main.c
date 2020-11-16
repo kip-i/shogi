@@ -28,6 +28,7 @@ int reput(int board[11][11],int pointBoard[11][11],int player)
 	}
 	return 2;
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};

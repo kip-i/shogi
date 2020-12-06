@@ -3,7 +3,7 @@
 #include <stdio.h>
 int reput(int board[11][11],int pointBoard[11][11],int player)
 {//(盤面,point盤,プレイヤーnum)
-	int i, j;
+	int i, j, xAb =0, yAb=0;//Abandoned
 	for(i=1;i<=10;i++)
 	{
 		for(j=1;j<=10;j++)
@@ -12,23 +12,66 @@ int reput(int board[11][11],int pointBoard[11][11],int player)
 			{
 				if(pointBoard[i][j]>=1)
 				{
-					printf("王手放置です.\n指し直してください.");
-					return 1;
-				}
+					printf("王手放置.プレイヤー1の負けです.");
+					return 3;					
+				}				
 			}
+			if(player==1&&board[i][j]==15)
+			{
+				if(pointBoard[i][j]>=1)
+				{
+					xAb=i;
+					yAb=j;
+				}
+			}			
 			if(player==2&&board[i][j]==15)
 			{
 				if(pointBoard[i][j]>=1)
 				{
-					printf("王手放置です.\n指し直してください.");
-					return 1;
+					printf("王手放置.プレイヤー2の負けです.");
+					return 3;
 				}
-			}
+			}	
+			if(player==2&&board[i][j]==1)
+			{
+				if(pointBoard[i][j]>=1)
+				{
+					xAb=i;
+					yAb=j;
+				}
+			}		
 		}
 	}
+	if(xAb!=0)
+	{
+		printf("王手!!");
+	}
 	return 2;
+}//3:終了,2:以上なし
+//------------------------------------------------------------------------------------------------------------------------------------------------
+int urakeima_1()
+{
+
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
+int urakeima_2()
+{
+
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------
+int urakyousha_1()
+{
+
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------
+int urakyousha_2()
+{
+
+}
+
+
+
+
 int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -262,7 +305,7 @@ int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
     }
     else if(x_put == 2 || x_put == 3)                        //選択成り
     {
-        printf("成る:1\n成らない:2");
+        printf("1:成る\n2:成らない");
         scanf("%d",&j);
         while(j != 1 || j != 2)
         {
@@ -278,7 +321,7 @@ int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
                  board[x_choice][y_choice] = 0;
                  return 2;
             }
-            printf("成る:1\n成らない:2");
+            printf("1:成る\n2:成らない");
             scanf("%d",&j);
         }
     }
@@ -371,7 +414,7 @@ int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
     }
     else if(x_put == 8 || x_put == 7)                         //選択成り
     {
-        printf("成る:1\n成らない:2");
+        printf("1:成る\n2:成らない");
         scanf("%d",&j);
         while(j != 1 || j != 2)
         {
@@ -387,7 +430,7 @@ int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
                  board[x_choice][y_choice] = 0;
                  return 2;
             }
-            printf("成る:1\n成らない:2");
+            printf("1:成る\n2:成らない");
             scanf("%d",&j);
         }
     }
@@ -545,7 +588,7 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	{
 		while (1)
 		{
-			printf("成る:1\n成らない:2\n");
+			printf("1:成る\n2:成らない\n");
 			scanf("%d", &option_nari);
 			
 			if (option_nari == 1)
@@ -686,7 +729,7 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		/*成るかどうか決めるまでループ*/
 		while (1)
 		{
-			printf("成る:1\n成らない:2\n");
+			printf("1:成る\n2:成らない\n");
 			scanf("%d" ,&option_nari);
 			
 			if (option_nari == 1)
@@ -825,7 +868,7 @@ int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
         {//裏になれるとき
             while(naru!=1&&naru!=2)
             {
-                printf("成る:1\n成らない:2");
+                printf("1:成る\n2:成らない");
                 scanf("%c",&naru);
             }
             if(naru==1)
@@ -889,7 +932,7 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
         {//裏になるとき
           while(naru!=1&&naru!=2)
             {
-                printf("成る:1\n成らない:2");
+                printf("1:成る\n2:成らない");
                 scanf("%c",&naru);
             }
             if(naru==1)
@@ -1383,7 +1426,7 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	{
 		while (1)
 		{
-			printf("成る:1\n成らない:2\n");
+			printf("1:成る\n2:成らない\n");
 			scanf("%d", &option_nari);
 			
 			if (option_nari == 1)
@@ -1534,7 +1577,7 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	{
 		while (1)
 		{
-			printf("成る:1\n成らない:2\n");
+			printf("1:成る\n2:成らない\n");
 			scanf("%d", &option_nari);
 			
 			if (option_nari == 1)
@@ -2058,7 +2101,117 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int main (void)
 {
-    int board[11][11];
-	printf("プルリクやってみる");
+    int board[11][11];//盤
+	int pointBoard[11][11];//判断盤
+	int i,j;
+	//--------------------------------
+	//boardの初期化
+	for(i=0;i<10;i++)
+	{
+		if(i==0&&i==10)
+		{
+			for(j=0;j<10;j++)
+			{
+				board[i][j]=99;
+			}
+		}
+		else
+		{
+			if(j==0&&j==10)
+			{
+				board[i][j]=99;
+			}
+			else
+			{
+				board[i][j]=0;
+			}
+			
+		}
+		
+	}
+	//--------------------------------
+	//名前登録
+	char player_1[1024],player_2[1024];//プレイヤーの名前
+	int have_1[40],have_2[40];//手持ち
+	printf("先攻・プレイヤー1さんの名前を登録してください:");
+    scanf("%s",player_1);
+    printf("後攻・プレイヤー2さんの名前を登録してください:");
+    scanf("%s",player_2);
+	display(board[11][11],have_1[40],have_2[40]);
+	int turn=1;//ターンカウンタ
+	int oute=0;//王手フラッグ
+	int x_choise;
+	int y_choise;
+	int x_put;
+	int y_put;
+	int discrimination;//1:置き直し,2:問題なし,3:負け
+	while(discrimination!=3)
+	{
+		if(turn%2==1)
+		{//先攻
+			printf("%sさんどこのコマ(行　列)をどこのマス(行　列)に置くか入力してください.\n行　列　行　列:",player_1);
+			scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
+			switch(board[x_choise][y_choise])
+			{
+				case 1:
+					discrimination=oushou_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 2:
+					discrimination=hisha_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 3:
+					discrimination=urahisha_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 4:
+					discrimination=kaku_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 5:
+					discrimination=urakaku_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 6:
+					discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 7:
+					discrimination=silver_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 8:
+					discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 9:
+					discrimination=keima_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 10:
+					discrimination=urakeima_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 11:
+					discrimination=kyousya_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 12:
+					discrimination=urakyousha_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 13:
+					discrimination=hu_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+				case 14:
+					discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+					break;
+			}
+		}
+		else
+		{//後攻
+			printf("%sさんどこのコマ(行　列)をどこのマス(行　列)に置くか入力してください./n",player_2);
+			scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
+			switch(board[x_choise][y_choise])
+			{
+				case 15:
+				discrimination=oushou_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+			}
+		}
+		discrimination=reput(board[11][11],pointBoard[11][11],turn%2);
+		if(discrimination==2)
+		{
+			turn++;
+		}
+	}
     return 0;
 }

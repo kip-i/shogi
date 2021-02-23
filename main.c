@@ -1,6 +1,7 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
 #include <stdio.h>
+/*　置き直しを止める
 int reput(int board[11][11],int pointBoard[11][11],int player)
 {//(盤面,point盤,プレイヤーnum)
 	int i, j, xAb =0, yAb=0;//Abandoned
@@ -48,7 +49,7 @@ int reput(int board[11][11],int pointBoard[11][11],int player)
 	}
 	return 2;
 }//3:終了,2:以上なし
-
+*/
 int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -732,7 +733,7 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
+int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
 {
     int i, j, around[3] = {-1, 0, 1};
 	int k=0;
@@ -751,27 +752,23 @@ int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    for(i = 0; i < 3; i++)
-    {
-        for(j = 0; j < 3; j++)
-        {
-            if(x_choise + around[i] == x_put && y_choise + around[j] == y_put)
-            {
-                while(have[k] != 0)
-				{//空欄まで進む
-					k++;
-				}
-				have[k] = board[x_put][y_put]+14;
-				board[x_put][y_put] = 1;
-                return 2;
-            }
-        }
-    }
+	if(x_put-x_choise<2&&x_put-x_choise>-2&&y_put-y_choise<2&&y_put-y_choise>-2)
+	{
+		while(have[k] != 0)
+		{//空欄まで進む
+			k++;
+		}
+		have[k] = board[x_put][y_put]-14;
+		board[x_put][y_put] = 1;
+		king[0][0]=x_put;
+		king[0][1]=y_put;
+		return 2;
+	}
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
+int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
 {
     int i, j, around[3] = {-1, 0, 1};
 	int k=0;
@@ -790,22 +787,18 @@ int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_pu
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    for(i = 0; i < 3; i++)
-    {
-        for(j = 0; j < 3; j++)
-        {
-            if(x_choise + around[i] == x_put && y_choise + around[j] == y_put)
-            {
-                while(have[k] != 0)
-				{//空欄まで進む
-					k++;
-				}
-				have[k] = board[x_put][y_put]-14;
-				board[x_put][y_put] = 15;
-                return 2;
-            }
-        }
-    }
+    if(x_put-x_choise<2&&x_put-x_choise>-2&&y_put-y_choise<2&&y_put-y_choise>-2)
+	{
+		while(have[k] != 0)
+		{//空欄まで進む
+			k++;
+		}
+		have[k] = board[x_put][y_put]+14;
+		board[x_put][y_put] = 15;
+		king[1][0]=x_put;
+		king[1][1]=y_put;
+		return 2;
+	}
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
@@ -2075,7 +2068,6 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	banmen[xhaiti][yhaiti] = 0;
 	return 2;
 }
-int judgment(int banmen[11][11],)
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int main (void)
 {
@@ -2136,7 +2128,7 @@ int main (void)
 				switch(board[x_choise][y_choise])
 				{
 					case 1:
-						discrimination=oushou_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=oushou_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put,king[2][2]);
 						break;
 					case 2:
 						discrimination=hisha_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
@@ -2187,7 +2179,7 @@ int main (void)
 				switch(board[x_choise][y_choise])
 				{
 					case 15:
-					discrimination=oushou_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+					discrimination=oushou_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put,king[2][2]);
 						break;
 					case 16:
 					discrimination=hisha_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);

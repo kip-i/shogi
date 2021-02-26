@@ -1,6 +1,106 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
 #include <stdio.h>
+
+/*盤面の表示*/
+int haiti(int bord[11][11])
+{
+	int loop1;
+	int loop2;
+	int loop3;
+	int koma;
+
+	/*盤面の表示*/
+	for(loop1 = 0;loop1 <= 10; loop1++)
+	{
+		/*盤面の横列表示*/
+		for(loop3 = 0; loop3 <= 10;loop3++)
+		{
+			if((loop1 == 0) && (loop3 != 0))
+			{
+				printf("   %d   ", loop3);
+			}
+			
+			if(loop1 == 0)
+			{
+				printf(" ");
+			}
+
+			if(loop1 != 0)
+			{
+				printf("------");
+			}
+		}
+		printf("\n");
+		printf("%d", loop1);
+
+		/*駒の判定*/
+		for (loop2 = 0; loop2 <= 10, loop1 != 0; loop2++)
+		{
+			koma = bord[loop1][loop2] % 14;
+
+			if(bord[loop1][loop2] > 0)
+			{
+				switch(koma)
+				{
+					case 1:
+						printf("|王将");
+						break;
+					case 2:
+						printf("|飛車");
+						break;
+					case 3:
+						printf("|成飛");
+						break;
+					case 4:
+						printf("|角行");
+						break;
+					case 5:
+						printf("|成角");
+						break;
+					case 6:
+						printf("|金将");
+						break;
+					case 7:
+						printf("|銀将");
+						break;
+					case 8:
+						printf("|成銀");
+						break;
+					case 9:
+						printf("|桂馬");
+						break;
+					case 10:
+						printf("|成桂");
+						break;
+					case 11:
+						printf("|香車");
+						break;
+					case 12:
+						printf("|成香");
+						break;
+					case 13:
+						printf("|歩　");
+						break;
+					case 0:
+						printf("|成歩");
+						break;
+				}
+
+				if(bord < 15)
+				{
+					printf("↑");
+				}
+				else
+				{
+					printf("↓");
+				}
+			}
+		}
+		printf("|\n");
+	}
+}
+
 int reput(int board[11][11],int pointBoard[11][11],int player)
 {//(盤面,point盤,プレイヤーnum)
 	int i, j, xAb =0, yAb=0;//Abandoned

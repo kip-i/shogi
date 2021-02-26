@@ -2,7 +2,7 @@
 //戻り値 2 配置可
 #include <stdio.h>
 
-/*盤面の表示*/
+/*盤面の表示を行う関数*/
 int haiti(int bord[11][11])
 {
 	int loop1;
@@ -87,7 +87,8 @@ int haiti(int bord[11][11])
 						break;
 				}
 
-				if(bord < 15)
+
+				if(bord[loop1][loop2] < 15)
 				{
 					printf("↑");
 				}

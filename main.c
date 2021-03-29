@@ -931,30 +931,43 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
+int keima_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
 
 	if ((1 <= board[x_put][y_put]) && (board[x_put][y_put] <= 14))
-	{
+	{//味方の駒がある
 		printf("味方の駒が置いてあります.\n指し直してください.\n");
 		return 1;
 	}
 	if ((x_put <= 0) || (x_put >= 10) || (y_put <= 0) || (y_put >= 10))
-	{
+	{//盤面外
 		printf("盤面外です.\n指し直してください.\n");
 		return 1;
 	}
 	if ((x_put == x_choice) && (y_put == y_choice))
-	{
+	{//動いていない
 		printf("動いていません.\n指し直してください.\n");
 		return 1;
 	}
-	if ((x_choice - 2 == x_put) && (y_choice - 1 == y_put))
-	{
+	if ((x_choice - 2 == x_put) && ((y_choice - 1 == y_put)||(y_choice + 1 == y_put))
+	{//動いた
+		if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
+		{//相手の駒がある
+			i=board[x_put][y_put]-14;
+			if((board[x_put][y_put]==3)||(board[x_put][y_put]==5)||(board[x_put][y_put]==8)||(board[x_put][y_put]==10)||(board[x_put][y_put]==12)||(board[x_put][y_put]==14))
+			{
+				i=i-3;
+			}
+			else
+			{
+				i=i-2;
+			}
+			have[i]++;
+		}
 		if (x_put <= 3)
-		{
+		{//裏になりうる
 			if (x_put == 3)
 			{
 				while (num != '1' && num != '2')
@@ -962,30 +975,27 @@ int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 					printf("成る＝1,成らない＝2\n");
 					scanf("%c", &num);
 					if (num == '1')
-					{
+					{//裏になる
 						board[x_put][y_put] = 10;
+						return 2;
+					}
+					if(num=='2')
+					{//裏にならない
+						board[x_put][y_put] = 9;
 						return 2;
 					}
 				}
 			}
 			if (x_put == 1)
-			{
+			{//最奥までいったら裏になる
 				board[x_put][y_put] = 10;
 				return 2;
 			}
 		}
 		else
-		{
+		{//裏になれない
 			board[x_put][y_put] = 9;
 			return 2;
-		}
-		if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
-		{
-			while (have[i] != 0)
-			{
-				i++;
-			}
-			have[i] = board[x_put][y_put] + 14;
 		}
 	}
 	printf("そこには動けません.\n指し直してください.\n");
@@ -2227,8 +2237,6 @@ int main (void)
 		{
 			turn++;
 		}
-		
-			
 	}
     return 0;
 }

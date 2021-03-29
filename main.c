@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /*盤面の表示を行う関数*/
-int haiti(int bord[11][11], int have_1[12],int have_2[12])
+int display(int bord[11][11], int have_1[12],int have_2[12])
 {
 	int loop1;
 	int loop2;

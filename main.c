@@ -50,6 +50,14 @@ int reput(int board[11][11],int pointBoard[11][11],int player)
 	return 2;
 }//3:終了,2:以上なし
 */
+
+int judgment(int pointboard[11][11],int player, int king[2][2])
+{                                   //1p=1・2p=2
+	int x,y,i,j;
+	x=king[player-1][0];
+	y=king[player-1][1];
+	
+}
 int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -735,7 +743,6 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
 {
-    int i, j, around[3] = {-1, 0, 1};
 	int k=0;
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
     {//味方コマが置いてあるとき
@@ -770,7 +777,6 @@ int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
 {
-    int i, j, around[3] = {-1, 0, 1};
 	int k=0;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <= 28)
     {//味方コマが置いてあるとき
@@ -2072,18 +2078,18 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 int main (void)
 {
     int board[11][11];//盤
-	int pointBoard[11][11];//判断盤
 	int i,j;
 	char player_1[1024],player_2[1024];//プレイヤーの名前
-	int have_1[40],have_2[40];//手持ち
+	int have_1[12],have_2[12];//手持ち
 	int turn=1;//ターンカウンタ
-	int oute=0;//王手フラッグ
+	int oute=0;//王手ポイント
 	int x_choise;
 	int y_choise;
 	int x_put;
 	int y_put;
 	int discrimination;//1:置き直し,2:問題なし,3:負け
-	int king[2][2]={{1,5},{9,5}};//王の位置・[プレイヤー][x,y]
+	int king[2][2]={{9,5},{1,5}};//王の位置・[プレイヤー][x,y]
+	int conNum;//何をするかを決める番号(controlnum)
 	//--------------------------------
 	//boardの初期化
 	for(i=0;i<10;i++)
@@ -2115,16 +2121,17 @@ int main (void)
     scanf("%s",player_1);
     printf("後攻・プレイヤー2さんの名前を登録してください:");
     scanf("%s",player_2);
-	display(board[11][11],have_1[40],have_2[40]);
+	display(board[11][11],have_1[12],have_2[12]);
 	while(discrimination!=3)
 	{
-		printf("%sさんどこのコマ(行　列)をどこのマス(行　列)に置くか入力してください.\n行　列　行　列:",player_1);
-		scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
-		if((x_put!=0)&&(x_put!=10)&&(y_put!=0)&&(y_put!=10)&&(x_choise!=&x_put)&&(y_choise!=y_put))
-		{
-			if(turn%2==1)
-			{//先攻
-			
+		if(turn%2==1&&discrimination!=1)
+		{//先攻			
+			printf("%sさんどの操作をするか入力してください.\n1:駒の移動, 2:持駒を置く, 3:投了:",player_1);
+			scanf("%d",conNum);
+			if(conNum==1)
+			{
+				printf("%sさんどこの駒(行　列)をどこのマス(行　列)に置くか入力してください.\n行　列　行　列:",player_1);
+				scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
 				switch(board[x_choise][y_choise])
 				{
 					case 1:
@@ -2169,11 +2176,66 @@ int main (void)
 					case 14:
 						discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
 						break;
+				}	
+				oute=scope_2(board[11][11],king[0][0],king[0][1]);
+				if(oute==0)
+				{
+					oute=scope_1(board[11][11],king[1][0],king[1][1]);
+					if(oute=>1)
+					{
+						printf("王手");
+						for(i=1;i<=oute;i++)
+						{
+							printf("!");
+						}
+						printf("\n");
+					}
 				}
-				
+				else
+				{
+					discrimination=3;
+					oute=2;//プレイヤー2
+				}
+
+
+					
+			}
+			elseif(conNum==2)
+			{
+				haveput();
+				oute=scope_2(board[11][11],king[0][0],king[0][1]);
+				if(oute==0)
+				{
+					oute=scope_1(board[11][11],king[1][0],king[1][1]);
+					if(oute=>1)
+					{
+						printf("王手");
+						for(i=1;i<=oute;i++)
+						{
+							printf("!");
+						}
+						printf("\n");
+					}
+				}
+				else
+				{
+					discrimination=3;
+					oute=2;//プレイヤー2
+				}
 			}
 			else
-			{//後攻
+			{
+				discrimination=3;
+			}
+			
+		}
+
+		if(turn%2==0&&discrimination!=1)
+		{//後攻
+			printf("%sさんどの操作をするか入力してください.\n1:駒の移動, 2:持駒を置く, 3:投了:",player_2);
+			scanf("%d",conNum);
+			if(conNum==1)
+			{
 				printf("%sさんどこのコマ(行　列)をどこのマス(行　列)に置くか入力してください./n",player_2);
 				scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
 				switch(board[x_choise][y_choise])
@@ -2221,14 +2283,68 @@ int main (void)
 						discrimination=kin_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
 						break;
 				}
+				oute=scope_1(board[11][11],king[1][0],king[1][1]);
+				if(oute==0)
+				{
+					oute=scope_2(board[11][11],king[0][0],king[0][1]);
+					if(oute=>1)
+					{
+						printf("王手");
+						for(i=1;i<=oute;i++)
+						{
+							printf("!");
+						}
+						printf("\n");
+					}
+				}
+				else
+				{
+					discrimination=3;
+					oute=1;//プレイヤー1
+				}
 			}
+			elseif(conNum==2)
+			{
+				haveput()
+				oute=scope_1(board[11][11],king[1][0],king[1][1]);
+				if(oute==0)
+				{
+					oute=scope_2(board[11][11],king[0][0],king[0][1]);
+					if(oute=>1)
+					{
+						printf("王手");
+						for(i=1;i<=oute;i++)
+						{
+							printf("!");
+						}
+						printf("\n");
+					}
+				}
+				else
+				{
+					discrimination=3;
+					oute=1;//プレイヤー1
+				}
+			}
+			else
+			{
+				discrimination = 3;
+				oute = 1;//プレイヤー1
+			}
+
 		}
-		else
+		if(discrimination!=1)
 		{
 			turn++;
 		}
-		
-			
+	}
+	if(oute=1)
+	{
+		printf("%sさんが勝ちました!",player_1);
+	}
+	else
+	{
+		printf("%sさんが勝ちました!",player_2);
 	}
     return 0;
 }

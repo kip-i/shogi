@@ -1,63 +1,193 @@
 //戻り値 1 配置不可
 //戻り値 2 配置可
 #include <stdio.h>
-/*　置き直しを止める
-int reput(int board[11][11],int pointBoard[11][11],int player)
-{//(盤面,point盤,プレイヤーnum)
-	int i, j, xAb =0, yAb=0;//Abandoned
-	for(i=1;i<=10;i++)
+
+/*盤面の表示を行う関数*/
+int haiti(int bord[11][11], int have_1[12],int have_2[12])
+{
+	int loop1;
+	int loop2;
+	int loop3;
+	int koma;
+
+	/*P2持駒の表示*/
+	printf("持駒 P2 ");
+	for (loop1 = 0; loop1 <= 12; loop1++)
 	{
-		for(j=1;j<=10;j++)
+		for (loop2 = 0; loop2 < have_2[loop1]; loop2++)
 		{
-			if(player==1&&board[i][j]==1)
+			switch (loop1)
 			{
-				if(pointBoard[i][j]>=1)
-				{
-					printf("王手放置.プレイヤー1の負けです.");
-					return 3;					
-				}				
+			case 0:
+				printf("飛");
+				break;
+			case 2:
+				printf("角");
+				break;
+			case 4:
+				printf("金");
+				break;
+			case 5:
+				printf("銀");
+				break;
+			case 7:
+				printf("桂");
+				break;
+			case 9:
+				printf("香");
+				break;
+			case 11:
+				printf("歩");
+				break;
 			}
-			if(player==1&&board[i][j]==15)
+		}
+		printf(" ");
+	}
+	printf("\n\n");
+	/*盤面の表示*/
+	for (loop1 = 0; loop1 < 10; loop1++)
+	{
+		/*盤面の横列表示*/
+		for (loop3 = 9; loop3 > 0; loop3--)
+		{
+			if ((loop1 == 0) && (loop3 != 0))
 			{
-				if(pointBoard[i][j]>=1)
-				{
-					xAb=i;
-					yAb=j;
-				}
-			}			
-			if(player==2&&board[i][j]==15)
+				printf("   %d  ", loop3);
+			}
+
+			if (loop1 == 0)
 			{
-				if(pointBoard[i][j]>=1)
-				{
-					printf("王手放置.プレイヤー2の負けです.");
-					return 3;
-				}
-			}	
-			if(player==2&&board[i][j]==1)
+				printf(" ");
+			}
+
+			if (loop1 != 0)
 			{
-				if(pointBoard[i][j]>=1)
+				printf("------+");
+			}
+		}
+
+		printf("\n");
+		if (loop1 != 0)
+		{
+			printf(" ");
+		}
+		else
+		{
+			printf("--");
+		}
+
+		/*駒の判定*/
+		for (loop2 = 1; loop2 < 10 && loop1 != 0; loop2++)
+		{
+			koma = bord[loop1][loop2] % 14;
+
+			if (bord[loop1][loop2] > 0)
+			{
+				switch (koma)
 				{
-					xAb=i;
-					yAb=j;
+				case 1:
+					printf("|王将");
+					break;
+				case 2:
+					printf("|飛車");
+					break;
+				case 3:
+					printf("|成飛");
+					break;
+				case 4:
+					printf("|角行");
+					break;
+				case 5:
+					printf("|成角");
+					break;
+				case 6:
+					printf("|金将");
+					break;
+				case 7:
+					printf("|銀将");
+					break;
+				case 8:
+					printf("|成銀");
+					break;
+				case 9:
+					printf("|桂馬");
+					break;
+				case 10:
+					printf("|成桂");
+					break;
+				case 11:
+					printf("|香車");
+					break;
+				case 12:
+					printf("|成香");
+					break;
+				case 13:
+					printf("|歩　");
+					break;
+				case 0:
+					printf("|成歩");
+					break;
 				}
-			}		
+
+
+				if (bord[loop1][loop2] < 15)
+				{
+					printf("↑");
+				}
+				else
+				{
+					printf("↓");
+				}
+			}
+			
+			if (bord[loop1][loop2] == 0)
+			{
+				printf("|　　  ");
+			}
+		}
+		if (loop1 != 0)
+		{
+			printf("| %d\n", loop1);
+			printf("--");
 		}
 	}
-	if(xAb!=0)
-	{
-		printf("王手!!");
-	}
-	return 2;
-}//3:終了,2:以上なし
-*/
 
-int judgment(int pointboard[11][11],int player, int king[2][2])
-{                                   //1p=1・2p=2
-	int x,y,i,j;
-	x=king[player-1][0];
-	y=king[player-1][1];
-	
+	/*P1持駒の表示*/
+	printf("\n持駒 P1 ");
+	for (loop1 = 0; loop1 <= 12; loop1++)
+	{
+		for (loop2 = 0; loop2 < have_1[loop1]; loop2++)
+		{
+			switch (loop1)
+			{
+			case 0:
+				printf("飛");
+				break;
+			case 2:
+				printf("角");
+				break;
+			case 4:
+				printf("金");
+				break;
+			case 5:
+				printf("銀");
+				break;
+			case 7:
+				printf("桂");
+				break;
+			case 9:
+				printf("香");
+				break;
+			case 11:
+				printf("歩");
+				break;
+			}
+		}
+		printf(" ");
+	}
+	printf("\n");
 }
+//------------------------------------------------------------------------------------------------------------------------------------------------
 int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
@@ -741,7 +871,7 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
+int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
 {
 	int k=0;
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
@@ -759,23 +889,27 @@ int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-	if(x_put-x_choise<2&&x_put-x_choise>-2&&y_put-y_choise<2&&y_put-y_choise>-2)
-	{
-		while(have[k] != 0)
-		{//空欄まで進む
-			k++;
-		}
-		have[k] = board[x_put][y_put]-14;
-		board[x_put][y_put] = 1;
-		king[0][0]=x_put;
-		king[0][1]=y_put;
-		return 2;
-	}
+    for(i = 0; i < 3; i++)
+    {
+        for(j = 0; j < 3; j++)
+        {
+            if(x_choise + around[i] == x_put && y_choise + around[j] == y_put)
+            {
+                while(have[k] != 0)
+				{//空欄まで進む
+					k++;
+				}
+				have[k] = board[x_put][y_put]+14;
+				board[x_put][y_put] = 1;
+                return 2;
+            }
+        }
+    }
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
+int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
 {
 	int k=0;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <= 28)
@@ -793,18 +927,22 @@ int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_pu
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    if(x_put-x_choise<2&&x_put-x_choise>-2&&y_put-y_choise<2&&y_put-y_choise>-2)
-	{
-		while(have[k] != 0)
-		{//空欄まで進む
-			k++;
-		}
-		have[k] = board[x_put][y_put]+14;
-		board[x_put][y_put] = 15;
-		king[1][0]=x_put;
-		king[1][1]=y_put;
-		return 2;
-	}
+    for(i = 0; i < 3; i++)
+    {
+        for(j = 0; j < 3; j++)
+        {
+            if(x_choise + around[i] == x_put && y_choise + around[j] == y_put)
+            {
+                while(have[k] != 0)
+				{//空欄まで進む
+					k++;
+				}
+				have[k] = board[x_put][y_put]-14;
+				board[x_put][y_put] = 15;
+                return 2;
+            }
+        }
+    }
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
@@ -2117,6 +2255,8 @@ int main (void)
 	}
 	//--------------------------------
 	//名前登録
+	char player_1[1024],player_2[1024];//プレイヤーの名前
+	int have_1[40],have_2[40];//手持ち
 	printf("先攻・プレイヤー1さんの名前を登録してください:");
     scanf("%s",player_1);
     printf("後攻・プレイヤー2さんの名前を登録してください:");

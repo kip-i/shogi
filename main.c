@@ -956,7 +956,7 @@ int keima_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_p
 		if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
 		{//相手の駒がある
 			i=board[x_put][y_put]-14;
-			if((board[x_put][y_put]==3)||(board[x_put][y_put]==5)||(board[x_put][y_put]==8)||(board[x_put][y_put]==10)||(board[x_put][y_put]==12)||(board[x_put][y_put]==14))
+			if((i==3)||(i==5)||(i==8)||(i==10)||(i==12)||(i==14))
 			{
 				i=i-3;
 			}

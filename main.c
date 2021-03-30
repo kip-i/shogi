@@ -2487,8 +2487,6 @@ int main (void)
 		{
 			turn++;
 		}
-<<<<<<< HEAD
-=======
 	}
 	if(oute=1)
 	{
@@ -2497,7 +2495,6 @@ int main (void)
 	else
 	{
 		printf("%sさんが勝ちました!",player_2);
->>>>>>> 31c83859e4c63493a71a20517e0c9f9f1a7b35b0
 	}
     return 0;
 }

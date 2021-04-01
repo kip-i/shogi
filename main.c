@@ -188,7 +188,7 @@ int display(int bord[11][11], int have_1[12],int have_2[12])
 	printf("\n");
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
+int kin_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -253,10 +253,10 @@ int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -266,20 +266,20 @@ int kin_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)        //2p金
+int kin_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)        //2p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -344,10 +344,10 @@ int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -357,20 +357,20 @@ int kin_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)      //1p香車
+int kyousya_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)      //1p香車
 {
     int i,j,loop1,loop2,number;
 
@@ -453,10 +453,10 @@ int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -466,20 +466,20 @@ int kyousya_1(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put,int y_put)    //2p香車
+int kyousya_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)    //2p香車
 {
     int i,j,loop1,loop2,number;
 
@@ -562,10 +562,10 @@ int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] - 14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -575,21 +575,21 @@ int kyousya_2(int board[11][11],int temoti[],int x_choice,int y_choice,int x_put
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
 			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*飛車の動き*/
-int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int hisha_1(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int loop1;
 	int loop2;
@@ -597,28 +597,28 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	int option_nari;
 
 	/*動けないマスが選択されたときは動かない*/
-	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || (banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	if (((x_choice != x_put) && (y_choice != y_put)) || ((x_choice == x_put) && (y_choice == y_put)) || (board[x_choice][y_choice] == 0) || (board[x_put][y_put] == -1))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
 	}
 
 	/*動くマスに味方のコマがあったら動かない*/
-	if (((banmen[xhaiti][yhaiti] <= 14) && (banmen[xmuve][ymuve] <= 14)))
+	if (((board[x_choice][y_choice] <= 14) && (board[x_put][y_put] <= 14)))
 	{
 		printf("味方のコマが置いてあります。\n差し直してください。");
 		return 1;
 	}
 	
 	/*縦に動く場合*/
-	if (xhaiti == xmuve)
+	if (x_choice == x_put)
 	{
-		if (yhaiti > ymuve)
+		if (y_choice > y_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = ymuve + 1;loop1 < yhaiti;loop1++)
+			for (loop1 = y_put + 1;loop1 < y_choice;loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -628,9 +628,9 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = yhaiti + 1; loop1 < ymuve; loop1++)
+			for (loop1 = y_choice + 1; loop1 < y_put; loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -640,14 +640,14 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 
 	/*横の動くとき*/
-	if (yhaiti == ymuve)
+	if (y_choice == y_put)
 	{
-		if (xhaiti > xmuve)
+		if (x_choice > x_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xmuve + 1; loop1 < xhaiti; loop1++)
+			for (loop1 = x_put + 1; loop1 < x_choice; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -657,9 +657,9 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xhaiti + 1; loop1 < xmuve; loop1++)
+			for (loop1 = x_choice + 1; loop1 < x_put; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -670,14 +670,14 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 
 	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
 	/*相手のコマを自分のコマの番号に直し保存する処理*/
-	if(banmen[xmuve][ymuve] >= 15)
+	if(board[x_put][y_put] >= 15)
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] -14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -685,22 +685,22 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 
 	/*成りの判定、及び動く処理*/
-	if ((banmen[xmuve][ymuve] <= 3) || (banmen[xhaiti][yhaiti] <= 3))
+	if ((board[x_put][y_put] <= 3) || (board[x_choice][y_choice] <= 3))
 	{
 		while (1)
 		{
@@ -710,27 +710,27 @@ int hisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 			if (option_nari == 1)
 			{
 		
-				banmen[xmuve][ymuve] = 3;
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = 3;
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 			if (option_nari == 2)
 			{
-				banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = board[x_choice][y_choice];
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 		}
 	}
 	else
 	{
-		banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-		banmen[xhaiti][yhaiti] = 0;
+		board[x_put][y_put] = board[x_choice][y_choice];
+		board[x_choice][y_choice] = 0;
 		return 2;
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int hisha_2(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int loop1;
 	int loop2;
@@ -738,28 +738,28 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	int option_nari;
 
 	/*動けないマスが選択されたときは動かない*/
-	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || (banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	if (((x_choice != x_put) && (y_choice != y_put)) || ((x_choice == x_put) && (y_choice == y_put)) || (board[x_choice][y_choice] == 0) || (board[x_put][y_put] == -1))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
 	}
 
 	/*動くマスに味方のコマがあったら動かない*/
-	if (((banmen[xhaiti][yhaiti] >= 15) && (banmen[xmuve][ymuve] >= 15)))
+	if (((board[x_choice][y_choice] >= 15) && (board[x_put][y_put] >= 15)))
 	{
 		printf("味方のコマが置いてあります。\n差し直してください。");
 		return 1;
 	}
 	
 	/*縦に動く場合*/
-	if (xhaiti == xmuve)
+	if (x_choice == x_put)
 	{
-		if (yhaiti > ymuve)
+		if (y_choice > y_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = ymuve + 1;loop1 < yhaiti;loop1++)
+			for (loop1 = y_put + 1;loop1 < y_choice;loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -769,9 +769,9 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = yhaiti + 1; loop1 < ymuve; loop1++)
+			for (loop1 = y_choice + 1; loop1 < y_put; loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -781,14 +781,14 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 
 	/*横の動くとき*/
-	if (yhaiti == ymuve)
+	if (y_choice == y_put)
 	{
-		if (xhaiti > xmuve)
+		if (x_choice > x_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xmuve + 1; loop1 < xhaiti; loop1++)
+			for (loop1 = x_put + 1; loop1 < x_choice; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -798,9 +798,9 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xhaiti + 1; loop1 < xmuve; loop1++)
+			for (loop1 = x_choice + 1; loop1 < x_put; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -810,14 +810,14 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 	}
 
 	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
-	if(banmen[xmuve][ymuve] <= 14)
+	if(board[x_put][y_put] <= 14)
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = banmen[xmuve][ymuve] +14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] +14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -825,22 +825,22 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 3;loop1 <= 5; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 		for (loop1 = 8; loop1 <= 14; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 	}
 	
 	/*成りの判定、及び移動の処理*/
-	if ((banmen[xhaiti][yhaiti] >= 8) || (banmen[xmuve][ymuve] >= 8))
+	if ((board[x_choice][y_choice] >= 8) || (board[x_put][y_put] >= 8))
 	{
 		/*成るかどうか決めるまでループ*/
 		while (1)
@@ -850,28 +850,28 @@ int hisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, 
 			
 			if (option_nari == 1)
 			{
-				banmen[xmuve][ymuve] = 17;
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = 17;
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 			
 			if (option_nari == 2)
 			{
-				banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = board[x_choice][y_choice];
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 		}
 	}
 	else		/*成れない場合移動の処理をする*/
 	{
-		banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-		banmen[xhaiti][yhaiti] = 0;
+		board[x_put][y_put] = board[x_choice][y_choice];
+		board[x_choice][y_choice] = 0;
 		return 2;		
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
+int oushou_1(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int y_put)
 {
 	int k=0;
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
@@ -884,7 +884,7 @@ int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,
         printf("盤面外です.\n指し直してください.");
         return 1;
     }
-    if(x_put == x_choise && y_put == y_choise)
+    if(x_put == x_choice && y_put == y_choice)
     {//同じ位置のとき
         printf("動いてません.\n指し直してください.");
         return 1;
@@ -893,7 +893,7 @@ int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,
     {
         for(j = 0; j < 3; j++)
         {
-            if(x_choise + around[i] == x_put && y_choise + around[j] == y_put)
+            if(x_choice + around[i] == x_put && y_choice + around[j] == y_put)
             {
                 while(have[k] != 0)
 				{//空欄まで進む
@@ -909,7 +909,7 @@ int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put)
+int oushou_2(int board[11][11],int  have[40], int x_choice,int y_choice,int x_put,int y_put)
 {
 	int k=0;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <= 28)
@@ -922,7 +922,7 @@ int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_pu
         printf("盤面外です.\n指し直してください.");
         return 1;
     }
-    if(x_put == x_choise && y_put == y_choise)
+    if(x_put == x_choice && y_put == y_choice)
     {//同じ位置のとき
         printf("動いてません.\n指し直してください.");
         return 1;
@@ -931,7 +931,7 @@ int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_pu
     {
         for(j = 0; j < 3; j++)
         {
-            if(x_choise + around[i] == x_put && y_choise + around[j] == y_put)
+            if(x_choice + around[i] == x_put && y_choice + around[j] == y_put)
             {
                 while(have[k] != 0)
 				{//空欄まで進む
@@ -947,7 +947,7 @@ int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_pu
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
+int hu_1(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int y_put)
 {
     int naru;
 	int i=0;
@@ -961,12 +961,12 @@ int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
         printf("盤面外です.\n指し直してください.");
         return 1;
     }
-    if(x_put == x_choise && y_put == y_choise)
+    if(x_put == x_choice && y_put == y_choice)
     {//同じ位置のとき
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    if(y_choise - 1 == y_put)
+    if(y_choice - 1 == y_put)
     {//置ける位置のとき
         if(y_put==1)
 		{//最奥のとき
@@ -1011,7 +1011,7 @@ int hu_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put)
+int hu_2(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int y_put)
 {
     int naru;
 	int i=0;
@@ -1025,12 +1025,12 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
         printf("盤面外です.\n指し直してください.");
         return 1;
     }
-    if(x_put == x_choise && y_put == y_choise)
+    if(x_put == x_choice && y_put == y_choice)
     {//同じ位置のとき
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    if(y_choise + 1 == y_put)
+    if(y_choice + 1 == y_put)
     {//置ける位置のとき
         if(y_put==9)
 		{//最奥のとき
@@ -1075,30 +1075,43 @@ int hu_2(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
+int keima_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
 
 	if ((1 <= board[x_put][y_put]) && (board[x_put][y_put] <= 14))
-	{
+	{//味方の駒がある
 		printf("味方の駒が置いてあります.\n指し直してください.\n");
 		return 1;
 	}
 	if ((x_put <= 0) || (x_put >= 10) || (y_put <= 0) || (y_put >= 10))
-	{
+	{//盤面外
 		printf("盤面外です.\n指し直してください.\n");
 		return 1;
 	}
 	if ((x_put == x_choice) && (y_put == y_choice))
-	{
+	{//動いていない
 		printf("動いていません.\n指し直してください.\n");
 		return 1;
 	}
-	if ((x_choice - 2 == x_put) && (y_choice - 1 == y_put))
-	{
+	if ((x_choice - 2 == x_put) && ((y_choice - 1 == y_put)||(y_choice + 1 == y_put))
+	{//動いた
+		if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
+		{//相手の駒がある
+			i=board[x_put][y_put]-14;
+			if((i==3)||(i==5)||(i==8)||(i==10)||(i==12)||(i==14))
+			{
+				i=i-3;
+			}
+			else
+			{
+				i=i-2;
+			}
+			have[i]++;
+		}
 		if (x_put <= 3)
-		{
+		{//裏になりうる
 			if (x_put == 3)
 			{
 				while (num != '1' && num != '2')
@@ -1106,37 +1119,34 @@ int keima_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_p
 					printf("成る＝1,成らない＝2\n");
 					scanf("%c", &num);
 					if (num == '1')
-					{
+					{//裏になる
 						board[x_put][y_put] = 10;
+						return 2;
+					}
+					if(num=='2')
+					{//裏にならない
+						board[x_put][y_put] = 9;
 						return 2;
 					}
 				}
 			}
 			if (x_put == 1)
-			{
+			{//最奥までいったら裏になる
 				board[x_put][y_put] = 10;
 				return 2;
 			}
 		}
 		else
-		{
+		{//裏になれない
 			board[x_put][y_put] = 9;
 			return 2;
-		}
-		if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
-		{
-			while (have[i] != 0)
-			{
-				i++;
-			}
-			have[i] = board[x_put][y_put] + 14;
 		}
 	}
 	printf("そこには動けません.\n指し直してください.\n");
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
+int keima_2(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
@@ -1416,7 +1426,7 @@ int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*角の動き*/
-int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int kaku_1(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int xloop;
 	int yloop;
@@ -1424,23 +1434,23 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	int number;
 	int option_nari;
 
-	if ((xhaiti == xmuve) || (ymuve == yhaiti))
+	if ((x_choice == x_put) || (y_put == y_choice))
 	{
 		printf("そこには,動けません.\n指し直してください.\n");
 		return 1;
 	}
 
 	/*上方向に動くとき*/
-	if (ymuve <= yhaiti)
+	if (y_put <= y_choice)
 	{
 		/*左上方向に動く時の動けるかどうかの確認*/
-		if (xmuve <= xhaiti)
+		if (x_put <= x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < ymuve;yloop++ )
+				for (yloop = y_put + 1; yloop < y_put;yloop++ )
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1449,13 +1459,13 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 			}
 		}
 		/*右上方向に動く時の動けるかどうかの確認*/
-		if (xmuve >= xhaiti)
+		if (x_put >= x_choice)
 		{
-			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
+			for (xloop = x_put -1; x_choice < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti;yloop--)
+				for (yloop = yloop + 1; yloop > y_choice;yloop--)
 				{
-					if(banmen[xloop][yloop] > 0)
+					if(board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1465,16 +1475,16 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		}
 	}
 	/*下方向に動くとき*/
-	if(ymuve > yhaiti)
+	if(y_put > y_choice)
 	{
 		/*左下方向に動くとき*/
-		if(xmuve < xhaiti)
+		if(x_put < x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti ; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice ; xloop++)
 			{
-				for (yloop = ymuve - 1; yloop < yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop < y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1483,13 +1493,13 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 			}
 		}
 		/*右下に動くときの確認*/
-		if (xmuve > xhaiti)
+		if (x_put > x_choice)
 		{
-			for (xloop = xmuve - 1; xloop > xhaiti ; xloop--)
+			for (xloop = x_put - 1; xloop > x_choice ; xloop--)
 			{
-				for (yloop = ymuve - 1; yloop > yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop > y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop])
+					if (board[xloop][yloop])
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1500,7 +1510,7 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	}
 
 	/*移動した先に味方のコマがないかの確認*/
-	if (banmen[xmuve][ymuve] <= 14)
+	if (board[x_put][y_put] <= 14)
 	{
 		printf("味方のコマが置いてあります.\n指し直してください.");
 		return 1;
@@ -1508,35 +1518,35 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 
 	/*以下コマの移動、コマを取る処理*/
 	/*相手のコマを取る処理*/
-	if (banmen[xmuve][ymuve] >= 15)
+	if (board[x_put][y_put] >= 15)
 	{
 		for (loop1 = 0; loop1 < 39; loop1++)
 		{
-			if (temoti[loop1] == 0)
+			if (have[loop1] == 0)
 			{
 				number = loop1;		/*コマを入れた配列を記録しておく*/
-				temoti[loop1] = banmen[xmuve][ymuve] - 14;
+				have[loop1] = board[x_put][y_put] - 14;
 				loop1 = 40;
 			}
 		}
 		/*成りコマを取った場合元のコマに戻し手持ちに入れる*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 	/*成り及び移動する処理*/
-	if ((banmen[xmuve][ymuve] <= 3) || (banmen[xhaiti][yhaiti] <= 3))
+	if ((board[x_put][y_put] <= 3) || (board[x_choice][y_choice] <= 3))
 	{
 		while (1)
 		{
@@ -1546,28 +1556,28 @@ int kaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 			if (option_nari == 1)
 			{
 		
-				banmen[xmuve][ymuve] = 5;
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = 5;
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 			if (option_nari == 2)
 			{
-				banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = board[x_choice][y_choice];
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 		}
 	}
 	else
 	{
-		banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-		banmen[xhaiti][yhaiti] = 0;
+		board[x_put][y_put] = board[x_choice][y_choice];
+		board[x_choice][y_choice] = 0;
 		return 2;
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*角の動き,preyer2*/
-int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int kaku_2(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int xloop;
 	int yloop;
@@ -1575,23 +1585,23 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	int number;
 	int option_nari;
 
-	if ((xhaiti == xmuve) || (ymuve == yhaiti))
+	if ((x_choice == x_put) || (y_put == y_choice))
 	{
 		printf("そこには,動けません.\n指し直してください.\n");
 		return 1;
 	}
 
 	/*上方向に動くとき*/
-	if (ymuve <= yhaiti)
+	if (y_put <= y_choice)
 	{
 		/*左上方向に動く時の動けるかどうかの確認*/
-		if (xmuve <= xhaiti)
+		if (x_put <= x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < yhaiti;yloop++ )
+				for (yloop = y_put + 1; yloop < y_choice;yloop++ )
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1600,13 +1610,13 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 			}
 		}
 		/*右上方向に動く時の動けるかどうかの確認*/
-		if (xmuve >= xhaiti)
+		if (x_put >= x_choice)
 		{
-			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
+			for (xloop = x_put -1; x_choice < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti;yloop--)
+				for (yloop = yloop + 1; yloop > y_choice;yloop--)
 				{
-					if(banmen[xloop][yloop] > 0)
+					if(board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1616,16 +1626,16 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 		}
 	}
 	/*下方向に動くとき*/
-	if(ymuve > yhaiti)
+	if(y_put > y_choice)
 	{
 		/*左下方向に動くとき*/
-		if(xmuve < xhaiti)
+		if(x_put < x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti ; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice ; xloop++)
 			{
-				for (yloop = ymuve - 1; yloop < yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop < y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1634,13 +1644,13 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 			}
 		}
 		/*右下に動くときの確認*/
-		if (xmuve > xhaiti)
+		if (x_put > x_choice)
 		{
-			for (xloop = xmuve - 1; xloop > xhaiti ; xloop--)
+			for (xloop = x_put - 1; xloop > x_choice ; xloop--)
 			{
-				for (yloop = ymuve - 1; yloop > yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop > y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop])
+					if (board[xloop][yloop])
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1651,7 +1661,7 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 	}
 
 	/*移動した先に味方のコマがないかの確認*/
-	if (banmen[xmuve][ymuve] >= 15)
+	if (board[x_put][y_put] >= 15)
 	{
 		printf("味方のコマが置いてあります.\n指し直してください.");
 		return 1;
@@ -1659,35 +1669,35 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 
 	/*以下コマの移動、コマを取る処理*/
 	/*相手のコマを取る処理*/
-	if (banmen[xmuve][ymuve] <= 14)
+	if (board[x_put][y_put] <= 14)
 	{
 		for (loop1 = 0; loop1 < 39; loop1++)
 		{
-			if (temoti[loop1] == 0)
+			if (have[loop1] == 0)
 			{
 				number = loop1;		/*コマを入れた配列を記録しておく*/
-				temoti[loop1] = banmen[xmuve][ymuve] + 14;
+				have[loop1] = board[x_put][y_put] + 14;
 				loop1 = 40;
 			}
 		}
 		/*成りコマを取った場合元のコマに戻し手持ちに入れる*/
 		for (loop1 = 3;loop1 <= 5; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 		for (loop1 = 8; loop1 <= 14; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 	}
 	/*成り及び移動する処理*/
-	if ((banmen[xmuve][ymuve] <= 3) || (banmen[xhaiti][yhaiti] <= 3))
+	if ((board[x_put][y_put] <= 3) || (board[x_choice][y_choice] <= 3))
 	{
 		while (1)
 		{
@@ -1697,51 +1707,51 @@ int kaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, i
 			if (option_nari == 1)
 			{
 		
-				banmen[xmuve][ymuve] = 19;
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = 19;
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 			if (option_nari == 2)
 			{
-				banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-				banmen[xhaiti][yhaiti] = 0;
+				board[x_put][y_put] = board[x_choice][y_choice];
+				board[x_choice][y_choice] = 0;
 				return 2;
 			}
 		}
 	}
 	else
 	{
-		banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-		banmen[xhaiti][yhaiti] = 0;
+		board[x_put][y_put] = board[x_choice][y_choice];
+		board[x_choice][y_choice] = 0;
 		return 2;
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏角の動き 1*/
-int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int urakaku_1(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int xloop;
 	int yloop;
 	int loop1;
 	int number;
 
-	if ((xhaiti == xmuve) || (ymuve == yhaiti) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1)))
+	if ((x_choice == x_put) || (y_put == y_choice) || ((x_put != x_choice - 1) || (x_put != x_choice) || (x_put != x_choice + 1)) && ((y_put != y_choice) || (y_put != y_choice + 1) || (y_put != y_choice - 1)))
 	{
 		printf("そこには,動けません.\n指し直してください.\n");
 		return 1;
 	}
 
 	/*上方向に動くとき*/
-	if (ymuve <= yhaiti)
+	if (y_put <= y_choice)
 	{
 		/*左上方向に動く時の動けるかどうかの確認*/
-		if (xmuve <= xhaiti)
+		if (x_put <= x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < yhaiti;yloop++ )
+				for (yloop = y_put + 1; yloop < y_choice;yloop++ )
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1750,13 +1760,13 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 			}
 		}
 		/*右上方向に動く時の動けるかどうかの確認*/
-		if (xmuve >= xhaiti)
+		if (x_put >= x_choice)
 		{
-			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
+			for (xloop = x_put -1; x_choice < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti; yloop--)
+				for (yloop = yloop + 1; yloop > y_choice; yloop--)
 				{
-					if(banmen[xloop][yloop] > 0)
+					if(board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1766,16 +1776,16 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 		}
 	}
 	/*下方向に動くとき*/
-	if(ymuve > yhaiti)
+	if(y_put > y_choice)
 	{
 		/*左下方向に動くとき*/
-		if(xmuve < xhaiti)
+		if(x_put < x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti ; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice ; xloop++)
 			{
-				for (yloop = ymuve - 1; yloop < yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop < y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1784,13 +1794,13 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 			}
 		}
 		/*右下に動くときの確認*/
-		if (xmuve > xhaiti)
+		if (x_put > x_choice)
 		{
-			for (xloop = xmuve - 1; xloop > xhaiti ; xloop--)
+			for (xloop = x_put - 1; xloop > x_choice ; xloop--)
 			{
-				for (yloop = ymuve - 1; yloop > yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop > y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop])
+					if (board[xloop][yloop])
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1801,7 +1811,7 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	}
 
 	/*移動した先に味方のコマがないかの確認*/
-	if (banmen[xmuve][ymuve] <= 14)
+	if (board[x_put][y_put] <= 14)
 	{
 		printf("味方のコマが置いてあります.\n指し直してください.");
 		return 1;
@@ -1809,64 +1819,64 @@ int urakaku_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 
 	/*以下コマの移動、コマを取る処理*/
 	/*相手のコマを取る処理*/
-	if (banmen[xmuve][ymuve] >= 15)
+	if (board[x_put][y_put] >= 15)
 	{
 		for (loop1 = 0; loop1 < 39; loop1++)
 		{
-			if (temoti[loop1] == 0)
+			if (have[loop1] == 0)
 			{
 				number = loop1;		/*コマを入れた配列を記録しておく*/
-				temoti[loop1] = banmen[xmuve][ymuve] - 14;
+				have[loop1] = board[x_put][y_put] - 14;
 				loop1 = 40;
 			}
 		}
 		/*成りコマを取った場合元のコマに戻し手持ちに入れる*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 	/*移動する処理*/
-	banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-	banmen[xhaiti][yhaiti] = 0;
+	board[x_put][y_put] = board[x_choice][y_choice];
+	board[x_choice][y_choice] = 0;
 	return 2;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏角の動き 2*/
-int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int urakaku_2(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int xloop;
 	int yloop;
 	int loop1;
 	int number;
 
-	if ((xhaiti == xmuve) || (ymuve == yhaiti) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1)))
+	if ((x_choice == x_put) || (y_put == y_choice) || ((x_put != x_choice - 1) || (x_put != x_choice) || (x_put != x_choice + 1)) && ((y_put != y_choice) || (y_put != y_choice + 1) || (y_put != y_choice - 1)))
 	{
 		printf("そこには,動けません.\n指し直してください.\n");
 		return 1;
 	}
 
 	/*上方向に動くとき*/
-	if (ymuve <= yhaiti)
+	if (y_put <= y_choice)
 	{
 		/*左上方向に動く時の動けるかどうかの確認*/
-		if (xmuve <= xhaiti)
+		if (x_put <= x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice; xloop++)
 			{
-				for (yloop = ymuve + 1; yloop < yhaiti;yloop++ )
+				for (yloop = y_put + 1; yloop < y_choice;yloop++ )
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1875,13 +1885,13 @@ int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 			}
 		}
 		/*右上方向に動く時の動けるかどうかの確認*/
-		if (xmuve >= xhaiti)
+		if (x_put >= x_choice)
 		{
-			for (xloop = xmuve -1; xhaiti < xloop; xloop--)
+			for (xloop = x_put -1; x_choice < xloop; xloop--)
 			{
-				for (yloop = yloop + 1; yloop > yhaiti;yloop--)
+				for (yloop = yloop + 1; yloop > y_choice;yloop--)
 				{
-					if(banmen[xloop][yloop] > 0)
+					if(board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1891,16 +1901,16 @@ int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 		}
 	}
 	/*下方向に動くとき*/
-	if(ymuve > yhaiti)
+	if(y_put > y_choice)
 	{
 		/*左下方向に動くとき*/
-		if(xmuve < xhaiti)
+		if(x_put < x_choice)
 		{
-			for (xloop = xmuve + 1; xloop < xhaiti ; xloop++)
+			for (xloop = x_put + 1; xloop < x_choice ; xloop++)
 			{
-				for (yloop = ymuve - 1; yloop < yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop < y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop] > 0)
+					if (board[xloop][yloop] > 0)
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1909,13 +1919,13 @@ int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 			}
 		}
 		/*右下に動くときの確認*/
-		if (xmuve > xhaiti)
+		if (x_put > x_choice)
 		{
-			for (xloop = xmuve - 1; xloop > xhaiti ; xloop--)
+			for (xloop = x_put - 1; xloop > x_choice ; xloop--)
 			{
-				for (yloop = ymuve - 1; yloop > yhaiti; yloop--)
+				for (yloop = y_put - 1; yloop > y_choice; yloop--)
 				{
-					if (banmen[xloop][yloop])
+					if (board[xloop][yloop])
 					{
 						printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 						return 1;
@@ -1926,7 +1936,7 @@ int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 	}
 
 	/*移動した先に味方のコマがないかの確認*/
-	if (banmen[xmuve][ymuve] >= 15)
+	if (board[x_put][y_put] >= 15)
 	{
 		printf("味方のコマが置いてあります.\n指し直してください.");
 		return 1;
@@ -1934,41 +1944,41 @@ int urakaku_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve
 
 	/*以下コマの移動、コマを取る処理*/
 	/*相手のコマを取る処理*/
-	if (banmen[xmuve][ymuve] <= 14)
+	if (board[x_put][y_put] <= 14)
 	{
 		for (loop1 = 0; loop1 < 39; loop1++)
 		{
-			if (temoti[loop1] == 0)
+			if (have[loop1] == 0)
 			{
 				number = loop1;		/*コマを入れた配列を記録しておく*/
-				temoti[loop1] = banmen[xmuve][ymuve] + 14;
+				have[loop1] = board[x_put][y_put] + 14;
 				loop1 = 40;
 			}
 		}
 		/*成りコマを取った場合元のコマに戻し手持ちに入れる*/
 		for (loop1 = 3;loop1 <= 5; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 		for (loop1 = 8; loop1 <= 14; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 	}
 	/*移動する処理*/
-	banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-	banmen[xhaiti][yhaiti] = 0;
+	board[x_put][y_put] = board[x_choice][y_choice];
+	board[x_choice][y_choice] = 0;
 	return 2;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏飛車の動き 1*/
-int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int urahisha_1(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int loop1;
 	int loop2;
@@ -1977,34 +1987,34 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 
 	/*動けないマスが選択されたときは動かない*/
 	/*周囲８マスも調べる*/
-	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))||(banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	if (((x_choice != x_put) && (y_choice != y_put)) || ((x_choice == x_put) && (y_choice == y_put)) || ((x_put != x_choice - 1) || (x_put != x_choice) || (x_put != x_choice + 1)) && ((y_put != y_choice) || (y_put != y_choice + 1) || (y_put != y_choice - 1))||(board[x_choice][y_choice] == 0) || (board[x_put][y_put] == -1))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
 	}
 	/*動いていなかったらだめ*/
-	if ((xmuve == xhaiti) && (ymuve == yhaiti))
+	if ((x_put == x_choice) && (y_put == y_choice))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
 	}
 
 	/*動くマスに味方のコマがあったら動かない*/
-	if (((banmen[xhaiti][yhaiti] <= 14) && (banmen[xmuve][ymuve] <= 14)))
+	if (((board[x_choice][y_choice] <= 14) && (board[x_put][y_put] <= 14)))
 	{
 		printf("味方のコマが置いてあります。\n差し直してください。");
 		return 1;
 	}
 
 	/*縦に動く場合*/
-	if (xhaiti == xmuve)
+	if (x_choice == x_put)
 	{
-		if (yhaiti > ymuve)
+		if (y_choice > y_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = ymuve + 1;loop1 < yhaiti;loop1++)
+			for (loop1 = y_put + 1;loop1 < y_choice;loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2014,9 +2024,9 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = yhaiti + 1; loop1 < ymuve; loop1++)
+			for (loop1 = y_choice + 1; loop1 < y_put; loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2026,14 +2036,14 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	}
 
 	/*横の動くとき*/
-	if (yhaiti == ymuve)
+	if (y_choice == y_put)
 	{
-		if (xhaiti > xmuve)
+		if (x_choice > x_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xmuve + 1; loop1 < xhaiti; loop1++)
+			for (loop1 = x_put + 1; loop1 < x_choice; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2043,9 +2053,9 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xhaiti + 1; loop1 < xmuve; loop1++)
+			for (loop1 = x_choice + 1; loop1 < x_put; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2056,14 +2066,14 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 
 	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
 	/*相手のコマを自分のコマの番号に直し保存する処理*/
-	if(banmen[xmuve][ymuve] >= 15)
+	if(board[x_put][y_put] >= 15)
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = banmen[xmuve][ymuve] -14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] -14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -2071,27 +2081,27 @@ int urahisha_1(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 17;loop1 <= 19; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 		for (loop1 = 22; loop1 <= 28; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]--;
+				have[number]--;
 			}
 		}
 	}
 	/*動く処理*/
-	banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-	banmen[xhaiti][yhaiti] = 0;
+	board[x_put][y_put] = board[x_choice][y_choice];
+	board[x_choice][y_choice] = 0;
 	return 2;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*裏飛車の動き 2*/
-int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuve, int ymuve)
+int urahisha_2(int board[11][11],int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int loop1;
 	int loop2;
@@ -2100,34 +2110,34 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 
 	/*動けないマスが選択されたときは動かない*/
 	/*周囲８マスをまずも調べる*/
-	if (((xhaiti != xmuve) && (yhaiti != ymuve)) || ((xhaiti == xmuve) && (yhaiti == ymuve)) || ((xmuve != xhaiti - 1) || (xmuve != xhaiti) || (xmuve != xhaiti + 1)) && ((ymuve != yhaiti) || (ymuve != yhaiti + 1) || (ymuve != yhaiti - 1))|| (banmen[xhaiti][yhaiti] == 0) || (banmen[xmuve][ymuve] == -1))
+	if (((x_choice != x_put) && (y_choice != y_put)) || ((x_choice == x_put) && (y_choice == y_put)) || ((x_put != x_choice - 1) || (x_put != x_choice) || (x_put != x_choice + 1)) && ((y_put != y_choice) || (y_put != y_choice + 1) || (y_put != y_choice - 1))|| (board[x_choice][y_choice] == 0) || (board[x_put][y_put] == -1))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
 	}
 	/*動いていなかったらだめ*/
-	if ((xmuve == xhaiti) && (ymuve == yhaiti))
+	if ((x_put == x_choice) && (y_put == y_choice))
 	{
 		printf("そこには動けません。\n指し直してください。\n");
 		return 1;
 	}
 
 	/*動くマスに味方のコマがあったら動かない*/
-	if (((banmen[xhaiti][yhaiti] >= 15) && (banmen[xmuve][ymuve] >= 15)))
+	if (((board[x_choice][y_choice] >= 15) && (board[x_put][y_put] >= 15)))
 	{
 		printf("味方のコマが置いてあります。\n差し直してください。");
 		return 1;
 	}
 
 	/*縦に動く場合*/
-	if (xhaiti == xmuve)
+	if (x_choice == x_put)
 	{
-		if (yhaiti > ymuve)
+		if (y_choice > y_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = ymuve + 1;loop1 < yhaiti;loop1++)
+			for (loop1 = y_put + 1;loop1 < y_choice;loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2137,9 +2147,9 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = yhaiti + 1; loop1 < ymuve; loop1++)
+			for (loop1 = y_choice + 1; loop1 < y_put; loop1++)
 			{
-				if (banmen[xhaiti][loop1] > 0)
+				if (board[x_choice][loop1] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2149,14 +2159,14 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 	}
 
 	/*横の動くとき*/
-	if (yhaiti == ymuve)
+	if (y_choice == y_put)
 	{
-		if (xhaiti > xmuve)
+		if (x_choice > x_put)
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xmuve + 1; loop1 < xhaiti; loop1++)
+			for (loop1 = x_put + 1; loop1 < x_choice; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2166,9 +2176,9 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 		else
 		{
 			/*動くマスと今いるマスの間に何もないかの確認の処理*/
-			for (loop1 = xhaiti + 1; loop1 < xmuve; loop1++)
+			for (loop1 = x_choice + 1; loop1 < x_put; loop1++)
 			{
-				if (banmen[loop1][yhaiti] > 0)
+				if (board[loop1][y_choice] > 0)
 				{
 					printf("通り道にコマがあるため動けません。\n差し直してください。\n");
 					return 1;		/*何かあったら動けないので1を返す*/
@@ -2179,14 +2189,14 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 
 	/*以下の処理をするときは動けることが確定している、ここでコマの成りを判定する。*/
 	/*相手のコマを自分のコマの番号に直し保存する処理*/
-	if(banmen[xmuve][ymuve] <= 14)
+	if(board[x_put][y_put] <= 14)
 	{
 		for (loop2 = 0; loop2 <= 39; loop2++)
 		{
-			if (temoti[loop2] == 0)
+			if (have[loop2] == 0)
 			{
 				number = loop2;
-				temoti[loop2] = banmen[xmuve][ymuve] +14;	/*自分の対応する番号に修正し保存*/
+				have[loop2] = board[x_put][y_put] +14;	/*自分の対応する番号に修正し保存*/
 				loop2 = 40;	/*ループから出るために代入*/
 			}
 		}
@@ -2194,22 +2204,22 @@ int urahisha_2(int banmen[11][11],int temoti[], int xhaiti, int yhaiti, int xmuv
 		/*成りコマは元のコマに直して保存する*/
 		for (loop1 = 3;loop1 <= 5; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 		for (loop1 = 8; loop1 <= 14; loop1 = loop1 + 2)
 		{
-			if(banmen[xmuve][ymuve] == loop1)
+			if(board[x_put][y_put] == loop1)
 			{
-				temoti[number]++;
+				have[number]++;
 			}
 		}
 	}
 	/*動く処理*/
-	banmen[xmuve][ymuve] = banmen[xhaiti][yhaiti];
-	banmen[xhaiti][yhaiti] = 0;
+	board[x_put][y_put] = board[x_choice][y_choice];
+	board[x_choice][y_choice] = 0;
 	return 2;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2221,8 +2231,8 @@ int main (void)
 	int have_1[12],have_2[12];//手持ち
 	int turn=1;//ターンカウンタ
 	int oute=0;//王手ポイント
-	int x_choise;
-	int y_choise;
+	int x_choice;
+	int y_choice;
 	int x_put;
 	int y_put;
 	int discrimination;//1:置き直し,2:問題なし,3:負け
@@ -2271,50 +2281,50 @@ int main (void)
 			if(conNum==1)
 			{
 				printf("%sさんどこの駒(行　列)をどこのマス(行　列)に置くか入力してください.\n行　列　行　列:",player_1);
-				scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
-				switch(board[x_choise][y_choise])
+				scanf("%d %d %d %d",&x_choice,&y_choice,&x_put,&y_put);
+				switch(board[x_choice][y_choice])
 				{
 					case 1:
-						discrimination=oushou_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put,king[2][2]);
+						discrimination=oushou_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put,king[2][2]);
 						break;
 					case 2:
-						discrimination=hisha_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=hisha_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 3:
-						discrimination=urahisha_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=urahisha_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 4:
-						discrimination=kaku_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kaku_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 5:
-						discrimination=urakaku_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=urakaku_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 6:
-						discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 7:
-						discrimination=silver_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=silver_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 8:
-						discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 9:
-						discrimination=keima_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=keima_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 10:
-						discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 11:
-						discrimination=kyousya_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kyousya_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 12:
-						discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 13:
-						discrimination=hu_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=hu_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 14:
-						discrimination=kin_1(board[11][11],have_1[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
 						break;
 				}	
 				oute=scope_2(board[11][11],king[0][0],king[0][1]);
@@ -2377,50 +2387,50 @@ int main (void)
 			if(conNum==1)
 			{
 				printf("%sさんどこのコマ(行　列)をどこのマス(行　列)に置くか入力してください./n",player_2);
-				scanf("%d %d %d %d",&x_choise,&y_choise,&x_put,&y_put);
-				switch(board[x_choise][y_choise])
+				scanf("%d %d %d %d",&x_choice,&y_choice,&x_put,&y_put);
+				switch(board[x_choice][y_choice])
 				{
 					case 15:
-					discrimination=oushou_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put,king[2][2]);
+					discrimination=oushou_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put,king[2][2]);
 						break;
 					case 16:
-					discrimination=hisha_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+					discrimination=hisha_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 17:
-						discrimination=urahisha_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=urahisha_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 18:
-						discrimination=kaku_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kaku_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 19:
-						discrimination=urakaku_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=urakaku_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 20:
-						discrimination=kin_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 21:
-						discrimination=silver_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=silver_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 22:
-						discrimination=kin_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 23:
-						discrimination=keima_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=keima_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 24:
-						discrimination=kin_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 25:
-						discrimination=kyousya_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kyousya_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 26:
-						discrimination=kin_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 27:
-						discrimination=hu_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=hu_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 					case 28:
-						discrimination=kin_2(board[11][11],have_2[40],x_choise,y_choise,x_put,y_put);
+						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
 						break;
 				}
 				oute=scope_1(board[11][11],king[1][0],king[1][1]);

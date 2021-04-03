@@ -12,38 +12,48 @@ int display(int bord[11][11], int have_1[12],int have_2[12])
 
 	/*P2持駒の表示*/
 	printf("持駒 P2 ");
-	for (loop1 = 0; loop1 <= 12; loop1++)
+
+	for (loop1 = 0, loop2 = 1; loop1 <= 11; loop1++)
 	{
-		for (loop2 = 0; loop2 < have_2[loop1]; loop2++)
+		if (have_2[loop1] != 0)
 		{
 			switch (loop1)
 			{
 			case 0:
-				printf("飛");
+				printf("%d：飛×%d、",loop2,have_2[loop1]);
+				loop2++;
 				break;
 			case 2:
-				printf("角");
+				printf("%d：角×%d、",loop2,have_2[loop1]);
+				loop2++;
 				break;
 			case 4:
-				printf("金");
+				printf("%d：金×%d、", loop2, have_2[loop1]);
+				loop2++;
 				break;
 			case 5:
-				printf("銀");
+				printf("%d：銀×%d、", loop2, have_2[loop1]);
+				loop2++;
 				break;
 			case 7:
-				printf("桂");
+				printf("%d：桂×%d、", loop2, have_2[loop1]);
+				loop2++;
 				break;
 			case 9:
-				printf("香");
+				printf("%d：香×%d、", loop2, have_2[loop1]);
+				loop2++;
 				break;
 			case 11:
-				printf("歩");
+				printf("%d：歩×%d、", loop2, have_2[loop1]);
+				loop2++;
 				break;
 			}
 		}
-		printf(" ");
 	}
 	printf("\n\n");
+
+
+
 	/*盤面の表示*/
 	for (loop1 = 0; loop1 < 10; loop1++)
 	{
@@ -139,7 +149,7 @@ int display(int bord[11][11], int have_1[12],int have_2[12])
 					printf("↓");
 				}
 			}
-			
+
 			if (bord[loop1][loop2] == 0)
 			{
 				printf("|　　  ");
@@ -154,36 +164,42 @@ int display(int bord[11][11], int have_1[12],int have_2[12])
 
 	/*P1持駒の表示*/
 	printf("\n持駒 P1 ");
-	for (loop1 = 0; loop1 <= 12; loop1++)
+	for (loop1 = 0, loop2 = 1; loop1 <= 11; loop1++)
 	{
-		for (loop2 = 0; loop2 < have_1[loop1]; loop2++)
+		if (have_1[loop1] != 0)
 		{
 			switch (loop1)
 			{
 			case 0:
-				printf("飛");
+				printf("%d：飛×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			case 2:
-				printf("角");
+				printf("%d：角×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			case 4:
-				printf("金");
+				printf("%d：金×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			case 5:
-				printf("銀");
+				printf("%d：銀×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			case 7:
-				printf("桂");
+				printf("%d：桂×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			case 9:
-				printf("香");
+				printf("%d：香×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			case 11:
-				printf("歩");
+				printf("%d：歩×%d、", loop2, have_1[loop1]);
+				loop2++;
 				break;
 			}
 		}
-		printf(" ");
 	}
 	printf("\n");
 }

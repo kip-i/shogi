@@ -203,6 +203,58 @@ int display(int bord[11][11], int have_1[12],int have_2[12])
 	}
 	printf("\n");
 }
+//-------------------------------------------------------------------------------------------------------------------------------
+int have_put(int board[][],int have[],int have_choice,int x_put,int y_put,int player_num)
+{
+	int i,j,flag=0;
+
+	if((board[x_put][y_put]>=1)&&(board[x_put][y_put]<=28))
+	{
+		printf("コマが置かれています.\n指し直してください.\n");
+		return 1;
+	}
+	else if(x_put <= 0 || x_put >= 10 || y_put <= 0 || y_put >= 10)
+	{
+		printf("盤面外です.\n指し直してください.\n");
+		return 1;
+	}
+	else
+	{
+		for(i=0;i<12;i++)
+	  	{
+			if(have[i]!=0)
+			{
+				flag++;
+			}
+			if(flag==have_choice)
+			{
+				have[i];
+				if(i==11)
+				{
+					for(j=1;j<10;i++)
+					{
+						if(board[j][y_put]==13+14*(player_num-1))
+						{
+							printf("2歩です.\n指し直してください.\n");
+							return 1;
+						}
+					}
+				}
+				if(player_num==1)
+				{
+					board[x_put][y_put]=i+2;
+					return 2;
+				}
+				if(player_num==2)
+				{
+					board[x_put][y_put]=i+16;
+					return 2;
+				}
+			}
+		}
+	}
+	return 1;
+}
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int kin_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
@@ -1091,7 +1143,7 @@ int hu_2(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
+int keima_1(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
@@ -1162,7 +1214,7 @@ int keima_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_p
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_2(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
+int keima_2(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
@@ -1223,7 +1275,7 @@ int keima_2(int board[11][11], int have[12], int x_choice, int y_choice, int x_p
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
+int silver_1(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 };
 	char num = '0';
@@ -1332,7 +1384,7 @@ int silver_1(int board[11][11], int have[40], int x_choice, int y_choice, int x_
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int silver_2(int board[11][11], int have[40], int x_choice, int y_choice, int x_put, int y_put)
+int silver_2(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 };
 	char num = '0';
@@ -2283,6 +2335,8 @@ int main (void)
 	//名前登録
 	char player_1[1024],player_2[1024];//プレイヤーの名前
 	int have_1[40],have_2[40];//手持ち
+	int have_choice;
+	int player_num;//プレイヤー番号
 	printf("先攻・プレイヤー1さんの名前を登録してください:");
     scanf("%s",player_1);
     printf("後攻・プレイヤー2さんの名前を登録してください:");
@@ -2361,14 +2415,14 @@ int main (void)
 				{
 					discrimination=3;
 					oute=2;//プレイヤー2
-				}
-
-
-					
+				}	
 			}
 			elseif(conNum==2)
 			{
-				haveput();
+				printf("%sさんどの駒をどこのマス(行　列)に置くか入力してください.\n駒種類 行 列:",player_1);
+				scanf("%d %d %d",&have_choice,&x_put,&y_put);
+				player_num=1;
+				discrimination=have_put(board,have_1,have_choice,x_put,y_put,player_num);
 				oute=scope_2(board[11][11],king[0][0],king[0][1]);
 				if(oute==0)
 				{
@@ -2471,7 +2525,10 @@ int main (void)
 			}
 			elseif(conNum==2)
 			{
-				haveput()
+				printf("%sさんどの駒をどこのマス(行　列)に置くか入力してください.\n駒種類 行 列:",player_2);
+				scanf("%d %d %d",&have_choice,&x_put,&y_put);
+				player_num=2;
+				discrimination=have_put(board,have_2,have_choice,x_put,y_put,player_num);
 				oute=scope_1(board[11][11],king[1][0],king[1][1]);
 				if(oute==0)
 				{

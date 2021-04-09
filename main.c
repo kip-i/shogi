@@ -939,7 +939,7 @@ int hisha_2(int board[11][11],int have[], int x_choice, int y_choice, int x_put,
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_1(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int y_put)
+int oushou_1(int board[11][11],int have[40],int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
 {
 	int k=0;
     if(1 <= board[x_put][y_put] && board[x_put][y_put] <=14)
@@ -952,32 +952,28 @@ int oushou_1(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,
         printf("盤面外です.\n指し直してください.");
         return 1;
     }
-    if(x_put == x_choice && y_put == y_choice)
+    if(x_put == x_choise && y_put == y_choise)
     {//同じ位置のとき
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    for(i = 0; i < 3; i++)
-    {
-        for(j = 0; j < 3; j++)
-        {
-            if(x_choice + around[i] == x_put && y_choice + around[j] == y_put)
-            {
-                while(have[k] != 0)
-				{//空欄まで進む
-					k++;
-				}
-				have[k] = board[x_put][y_put]+14;
-				board[x_put][y_put] = 1;
-                return 2;
-            }
-        }
-    }
+	if(x_put-x_choise<2&&x_put-x_choise>-2&&y_put-y_choise<2&&y_put-y_choise>-2)
+	{
+		while(have[k] != 0)
+		{//空欄まで進む
+			k++;
+		}
+		have[k] = board[x_put][y_put]-14;
+		board[x_put][y_put] = 1;
+		king[0][0]=x_put;
+		king[0][1]=y_put;
+		return 2;
+	}
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int oushou_2(int board[11][11],int  have[40], int x_choice,int y_choice,int x_put,int y_put)
+int oushou_2(int board[11][11],int  have[40], int x_choise,int y_choise,int x_put,int y_put,int king[2][2])
 {
 	int k=0;
     if(15 <= board[x_put][y_put] && board[x_put][y_put] <= 28)
@@ -990,27 +986,23 @@ int oushou_2(int board[11][11],int  have[40], int x_choice,int y_choice,int x_pu
         printf("盤面外です.\n指し直してください.");
         return 1;
     }
-    if(x_put == x_choice && y_put == y_choice)
+    if(x_put == x_choise && y_put == y_choise)
     {//同じ位置のとき
         printf("動いてません.\n指し直してください.");
         return 1;
     }
-    for(i = 0; i < 3; i++)
-    {
-        for(j = 0; j < 3; j++)
-        {
-            if(x_choice + around[i] == x_put && y_choice + around[j] == y_put)
-            {
-                while(have[k] != 0)
-				{//空欄まで進む
-					k++;
-				}
-				have[k] = board[x_put][y_put]-14;
-				board[x_put][y_put] = 15;
-                return 2;
-            }
-        }
-    }
+    if(x_put-x_choise<2&&x_put-x_choise>-2&&y_put-y_choise<2&&y_put-y_choise>-2)
+	{
+		while(have[k] != 0)
+		{//空欄まで進む
+			k++;
+		}
+		have[k] = board[x_put][y_put]+14;
+		board[x_put][y_put] = 15;
+		king[1][0]=x_put;
+		king[1][1]=y_put;
+		return 2;
+	}
     printf("そこには,動けません.\n指し直してください.");
     return 1;
 }
@@ -2310,7 +2302,7 @@ int main (void)
 	//boardの初期化
 	for(i=0;i<10;i++)
 	{
-		if(i==0&&i==10)
+		if(i==0||i==10)
 		{
 			for(j=0;j<10;j++)
 			{
@@ -2319,7 +2311,7 @@ int main (void)
 		}
 		else
 		{
-			if(j==0&&j==10)
+			if(j==0||j==10)
 			{
 				board[i][j]=99;
 			}

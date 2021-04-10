@@ -202,9 +202,10 @@ int display(int bord[11][11], int have_1[12],int have_2[12])
 		}
 	}
 	printf("\n");
+	return 0;
 }
 //-------------------------------------------------------------------------------------------------------------------------------
-int have_put(int board[][],int have[],int have_choice,int x_put,int y_put,int player_num)
+int have_put(int board[11][11],int have[12],int have_choice,int x_put,int y_put,int player_num)
 {
 	int i,j,flag=0;
 
@@ -228,7 +229,6 @@ int have_put(int board[][],int have[],int have_choice,int x_put,int y_put,int pl
 			}
 			if(flag==have_choice)
 			{
-				have[i];
 				if(i==11)
 				{
 					for(j=1;j<10;i++)
@@ -256,7 +256,7 @@ int have_put(int board[][],int have[],int have_choice,int x_put,int y_put,int pl
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int kin_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)              //1p金
+int kin_1(int board[11][11],int have[12],int x_choice,int y_choice,int x_put,int y_put)              //1p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -345,9 +345,10 @@ int kin_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y
 			}
 		}
 	}
+	return 0;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int kin_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)        //2p金
+int kin_2(int board[11][11],int have[12],int x_choice,int y_choice,int x_put,int y_put)        //2p金
 {
     int i, j, around[3] = {-1, 0, 1};
     int loop1,loop2,number;
@@ -436,6 +437,7 @@ int kin_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y
 			}
 		}
 	}
+	return 0;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int kyousya_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)      //1p香車
@@ -545,6 +547,7 @@ int kyousya_1(int board[11][11],int have[],int x_choice,int y_choice,int x_put,i
 			}
 		}
 	}
+	return 0;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 int kyousya_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,int y_put)    //2p香車
@@ -592,7 +595,7 @@ int kyousya_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,i
     }
     if(x_put == 9)                                            //強制成り
     {
-        board[x_put][y_put] == 26;
+        board[x_put][y_put] = 26;
         board[x_choice][y_choice] = 0;
         return 2;
     }
@@ -654,6 +657,7 @@ int kyousya_2(int board[11][11],int have[],int x_choice,int y_choice,int x_put,i
 			}
 		}
 	}
+	return 0;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
 /*飛車の動き*/
@@ -1038,12 +1042,12 @@ int hu_1(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int 
 			board[x_put][y_put]=14;
 			return 2;
 		}
-		if(y_put<=3)
+		if(y_put<=3||y_choice<=3)
         {//裏になれるとき
             while(naru!=1&&naru!=2)
             {
                 printf("1:成る\n2:成らない");
-                scanf("%c",&naru);
+                scanf("%d",&naru);
             }
             if(naru==1)
             {
@@ -1102,12 +1106,12 @@ int hu_2(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int 
 			board[x_put][y_put]=28;
 			return 2;
 		}
-		if(y_put>=7)
+		if(y_put>=7||y_choice>=7)
         {//裏になるとき
           while(naru!=1&&naru!=2)
             {
                 printf("1:成る\n2:成らない");
-                scanf("%c",&naru);
+                scanf("%d",&naru);
             }
             if(naru==1)
             {
@@ -1135,7 +1139,7 @@ int hu_2(int board[11][11],int have[40],int x_choice,int y_choice,int x_put,int 
     return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_1(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
+int keima_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
@@ -1155,7 +1159,7 @@ int keima_1(int board[][], int have[], int x_choice, int y_choice, int x_put, in
 		printf("動いていません.\n指し直してください.\n");
 		return 1;
 	}
-	if ((x_choice - 2 == x_put) && ((y_choice - 1 == y_put)||(y_choice + 1 == y_put))
+	if ((x_choice - 2 == x_put) && ((y_choice - 1 == y_put)||(y_choice + 1 == y_put)))
 	{//動いた
 		if ((15 <= board[x_put][y_put]) && (board[x_put][y_put] <= 28))
 		{//相手の駒がある
@@ -1206,7 +1210,7 @@ int keima_1(int board[][], int have[], int x_choice, int y_choice, int x_put, in
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int keima_2(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
+int keima_2(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i = 0;
 	char num = '0';
@@ -1267,7 +1271,7 @@ int keima_2(int board[][], int have[], int x_choice, int y_choice, int x_put, in
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int silver_1(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
+int silver_1(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 };
 	char num = '0';
@@ -1376,7 +1380,7 @@ int silver_1(int board[][], int have[], int x_choice, int y_choice, int x_put, i
 	return 1;
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------
-int silver_2(int board[][], int have[], int x_choice, int y_choice, int x_put, int y_put)
+int silver_2(int board[11][11], int have[12], int x_choice, int y_choice, int x_put, int y_put)
 {
 	int i, j, k = 0, front[3] = { -1, 0, 1 };
 	char num = '0';
@@ -2298,6 +2302,8 @@ int main (void)
 	int discrimination;//1:置き直し,2:問題なし,3:負け
 	int king[2][2]={{9,5},{1,5}};//王の位置・[プレイヤー][x,y]
 	int conNum;//何をするかを決める番号(controlnum)
+	int have_choice;
+	int player_num;//プレイヤー番号
 	//--------------------------------
 	//boardの初期化
 	for(i=0;i<10;i++)
@@ -2325,21 +2331,17 @@ int main (void)
 	}
 	//--------------------------------
 	//名前登録
-	char player_1[1024],player_2[1024];//プレイヤーの名前
-	int have_1[40],have_2[40];//手持ち
-	int have_choice;
-	int player_num;//プレイヤー番号
 	printf("先攻・プレイヤー1さんの名前を登録してください:");
     scanf("%s",player_1);
     printf("後攻・プレイヤー2さんの名前を登録してください:");
     scanf("%s",player_2);
-	display(board[11][11],have_1[12],have_2[12]);
 	while(discrimination!=3)
 	{
+		display(board,have_1,have_2);
 		if(turn%2==1&&discrimination!=1)
 		{//先攻			
 			printf("%sさんどの操作をするか入力してください.\n1:駒の移動, 2:持駒を置く, 3:投了:",player_1);
-			scanf("%d",conNum);
+			scanf("%d",&conNum);
 			if(conNum==1)
 			{
 				printf("%sさんどこの駒(行　列)をどこのマス(行　列)に置くか入力してください.\n行　列　行　列:",player_1);
@@ -2347,53 +2349,53 @@ int main (void)
 				switch(board[x_choice][y_choice])
 				{
 					case 1:
-						discrimination=oushou_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put,king[2][2]);
+						discrimination=oushou_1(board,have_1,x_choice,y_choice,x_put,y_put,king);
 						break;
 					case 2:
-						discrimination=hisha_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=hisha_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 3:
-						discrimination=urahisha_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=urahisha_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 4:
-						discrimination=kaku_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kaku_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 5:
-						discrimination=urakaku_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=urakaku_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 6:
-						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 7:
-						discrimination=silver_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=silver_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 8:
-						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 9:
-						discrimination=keima_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=keima_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 10:
-						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 11:
-						discrimination=kyousya_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kyousya_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 12:
-						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 13:
-						discrimination=hu_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=hu_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 					case 14:
-						discrimination=kin_1(board[11][11],have_1[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_1(board,have_1,x_choice,y_choice,x_put,y_put);
 						break;
 				}	
-				oute=scope_2(board[11][11],king[0][0],king[0][1]);
+				oute=scope_2(board,&king[0][0],&king[0][1]);
 				if(oute==0)
 				{
-					oute=scope_1(board[11][11],king[1][0],king[1][1]);
-					if(oute=>1)
+					oute=scope_1(board,&king[1][0],&king[1][1]);
+					if(oute>=1)
 					{
 						printf("王手");
 						for(i=1;i<=oute;i++)
@@ -2409,7 +2411,7 @@ int main (void)
 					oute=2;//プレイヤー2
 				}	
 			}
-			elseif(conNum==2)
+			else if(conNum==2)
 			{
 				printf("%sさんどの駒をどこのマス(行　列)に置くか入力してください.\n駒種類 行 列:",player_1);
 				scanf("%d %d %d",&have_choice,&x_put,&y_put);
@@ -2419,7 +2421,7 @@ int main (void)
 				if(oute==0)
 				{
 					oute=scope_1(board[11][11],king[1][0],king[1][1]);
-					if(oute=>1)
+					if(oute>=1)
 					{
 						printf("王手");
 						for(i=1;i<=oute;i++)
@@ -2445,7 +2447,7 @@ int main (void)
 		if(turn%2==0&&discrimination!=1)
 		{//後攻
 			printf("%sさんどの操作をするか入力してください.\n1:駒の移動, 2:持駒を置く, 3:投了:",player_2);
-			scanf("%d",conNum);
+			scanf("%d",&conNum);
 			if(conNum==1)
 			{
 				printf("%sさんどこのコマ(行　列)をどこのマス(行　列)に置くか入力してください./n",player_2);
@@ -2453,53 +2455,53 @@ int main (void)
 				switch(board[x_choice][y_choice])
 				{
 					case 15:
-					discrimination=oushou_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put,king[2][2]);
+					discrimination=oushou_2(board,have_2,x_choice,y_choice,x_put,y_put,king);
 						break;
 					case 16:
-					discrimination=hisha_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+					discrimination=hisha_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 17:
-						discrimination=urahisha_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=urahisha_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 18:
-						discrimination=kaku_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kaku_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 19:
-						discrimination=urakaku_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=urakaku_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 20:
-						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 21:
-						discrimination=silver_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=silver_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 22:
-						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 23:
-						discrimination=keima_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=keima_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 24:
-						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 25:
-						discrimination=kyousya_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kyousya_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 26:
-						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 27:
-						discrimination=hu_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=hu_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 					case 28:
-						discrimination=kin_2(board[11][11],have_2[12],x_choice,y_choice,x_put,y_put);
+						discrimination=kin_2(board,have_2,x_choice,y_choice,x_put,y_put);
 						break;
 				}
-				oute=scope_1(board[11][11],king[1][0],king[1][1]);
+				oute=scope_1(board,&king[1][0],&king[1][1]);
 				if(oute==0)
 				{
-					oute=scope_2(board[11][11],king[0][0],king[0][1]);
-					if(oute=>1)
+					oute=scope_2(board,&king[0][0],&king[0][1]);
+					if(oute>=1)
 					{
 						printf("王手");
 						for(i=1;i<=oute;i++)
@@ -2515,17 +2517,17 @@ int main (void)
 					oute=1;//プレイヤー1
 				}
 			}
-			elseif(conNum==2)
+			else if(conNum==2)
 			{
 				printf("%sさんどの駒をどこのマス(行　列)に置くか入力してください.\n駒種類 行 列:",player_2);
 				scanf("%d %d %d",&have_choice,&x_put,&y_put);
 				player_num=2;
 				discrimination=have_put(board,have_2,have_choice,x_put,y_put,player_num);
-				oute=scope_1(board[11][11],king[1][0],king[1][1]);
+				oute=scope_1(board,&king[1][0],&king[1][1]);
 				if(oute==0)
 				{
-					oute=scope_2(board[11][11],king[0][0],king[0][1]);
-					if(oute=>1)
+					oute=scope_2(board,&king[0][0],&king[0][1]);
+					if(oute>=1)
 					{
 						printf("王手");
 						for(i=1;i<=oute;i++)
@@ -2553,7 +2555,7 @@ int main (void)
 			turn++;
 		}
 	}
-	if(oute=1)
+	if(oute==1)
 	{
 		printf("%sさんが勝ちました!",player_1);
 	}
